@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -26,7 +26,6 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "-": "^0.0.1",
     "nodemon": "^3.1.10"
   }
 }

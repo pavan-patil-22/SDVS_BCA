@@ -1,12 +1,6 @@
 import express from "express";
 import upload from "../middleware/upload.js";
-import {
-  createPlacement,
-  getPlacements,
-  getPlacementById,
-  updatePlacement,
-  deletePlacement,
-} from "../controllers/placementController.js";
+import {createPlacement, getPlacementById, getPlacements,updatePlacement,deletePlacement} from "../controllers/PlacementController.js";
 
 const placementRouter = express.Router();
 

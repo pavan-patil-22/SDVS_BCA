@@ -37,6 +37,10 @@ app.use("/api/placements",placementRouter);
 app.use("/api/events-news",eventNewsRouter);
 app.use("/api/contact-message", contactMessageRouter);
 app.use("/api/notifications", notificationRrouter);
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 
 
 

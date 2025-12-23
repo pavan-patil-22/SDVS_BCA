@@ -167,7 +167,7 @@ const Home = () => {
     "Library": {
       title: "Library",
       description: "Our sustainable and thoughtfully designed library supports deep learning and well-being in a calm, inspiring environment.",
-      image: "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg"
+      image: 'bg_pic.jpeg'
     },
     "Sports & Grounds": {
       title: "Sports & Grounds",
@@ -712,7 +712,7 @@ const Home = () => {
           }}
           data-aos="fade-down"
         >
-          20k+
+          10k+
           <span
             style={{
               fontSize: isMobile ? "12px" : "14px",

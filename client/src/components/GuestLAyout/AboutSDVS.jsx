@@ -1,309 +1,3 @@
-// import React, { useEffect } from "react";
-// import { Container, Row, Col } from "react-bootstrap";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-
-// const AboutSDVS = () => {
-//   useEffect(() => {
-//     window.scrollTo({
-//       top: 0,
-//       left: 0,
-//       behavior: "smooth",
-//     });
-//     AOS.init({
-//       duration: 800,
-//       easing: "ease-in-out",
-//       once: false,
-//     });
-//   }, []);
-
-//   const institutions = [
-//     { id: 1, name: "S.D.High School, Sankeshwar", year: 1927 },
-//     {
-//       id: 2,
-//       name: "Shri. D.L.Khot composite Pre-university College, Hebbal",
-//       year: 1959,
-//     },
-//     { id: 3, name: "Kannada Medium Nursery School, Sankeshwar", year: 1960 },
-//     {
-//       id: 4,
-//       name: "Shri. Appangouda Patil Vidya Mandir, Kanagala",
-//       year: 1965,
-//     },
-//     {
-//       id: 5,
-//       name: "Shri.L.B.Sardesai Comp, Pre-university College, Yadagud",
-//       year: 1966,
-//     },
-//     { id: 6, name: "Akkamahadevi Kanya Shale, Sankeshwar", year: 1966 },
-//     {
-//       id: 7,
-//       name: "S.S.Arts College and T.P.Science Institute, Sankeshwar",
-//       year: 1967,
-//     },
-//     {
-//       id: 8,
-//       name: "Shri. L.K.Khot College of Commerce, Sankeshwar",
-//       year: 1970,
-//     },
-//     {
-//       id: 9,
-//       name: "Shri. Sidagouda S.Patil(khatedar)English Medium School, Sankeshwar",
-//       year: 1971,
-//     },
-//     { id: 21, name: "Hira Sugar Boys Hostel", year: 1970 },
-//     {
-//       id: 10,
-//       name: "Pre-Primary English Medium School, Sankeshwar",
-//       year: 1991,
-//     },
-//     {
-//       id: 11,
-//       name: "Kannada and Marathi Convent Primary School, Sankeshwar",
-//       year: 1993,
-//     },
-//     { id: 12, name: "B.B.A. College, Sankeshwar", year: 1996 },
-//     {
-//       id: 13,
-//       name: "Arts,Science & Commerce,P.U.College, Sankeshwar",
-//       year: 2001,
-//     },
-//     { id: 14, name: "BSW College, Sankeshwar", year: 2006 },
-//     { id: 15, name: "BCA College, Sankeshwar", year: 2007 },
-//     {
-//       id: 16,
-//       name: "Annapurna Institute of Management Studies, Sankeshwar",
-//       year: 2009,
-//     },
-//     { id: 17, name: "Basagouda.A.Patil I.T.I College", year: 2009 },
-//     { id: 23, name: "Rani Channamma Girls Hostel", year: 2011 },
-//     {
-//       id: 18,
-//       name: "Shri.S.S.(K) Patil English Medium (CBSE) School, Sankeshwar",
-//       year: 2012,
-//     },
-//     { id: 22, name: "Akkamahadevi Girls Hostel", year: 2014 },
-//     {
-//       id: 19,
-//       name: "Shri. L.K.Khot College of Master of Commerce (M.Com), Sankeshwar",
-//       year: 2018,
-//     },
-//     {
-//       id: 20,
-//       name: "SDVS Sangh's Annapoorna Institute of Nursing",
-//       year: 2023,
-//     },
-//   ];
-
-//   return (
-//     <div className="about-page">
-//       {/* Hero Section */}
-//       <div className="about-hero-section text-center py-5">
-//         <Container>
-//           <div className="hero-content" data-aos="fade-down">
-//             <h1 className="display-4 fw-bold text-white mb-3">
-//               ABOUT SDVS SANGH
-//             </h1>
-//             <p className="lead text-white mb-4">
-//               90 Years of Excellence in Education and Community Development
-//             </p>
-//             <div
-//               className="hero-divider"
-//               data-aos="zoom-in"
-//               data-aos-delay="300"
-//             ></div>
-//           </div>
-//         </Container>
-//       </div>
-
-//       <Container className="my-5">
-//         {/* Main Content Section */}
-//         <Row className="mb-5">
-//           <Col lg={8} className="mx-auto">
-//             <div className="text-center mb-5" data-aos="fade-up">
-//               <h2 className="section-title">About Sangh</h2>
-//               <p className="lead text-muted">
-//                 Transforming Education Since 1929
-//               </p>
-//             </div>
-
-//             <div data-aos="fade-up" data-aos-delay="200">
-//               <p className="about-text">
-//                 It is no exaggeration that the story of Shri. Duradundeeshwar
-//                 Vidya Samavardhak Sangh is the story of education in the
-//                 Sankeshwar area. Besides, evolving healthily through its
-//                 institution it has been complementary to the cultural
-//                 development of this area. The Sangh has a glorious history of 90
-//                 years since 1929. In its infancy, it started with a single
-//                 school with a single teacher, now it has grown to run as many as
-//                 20 institutions.
-//               </p>
-//             </div>
-//           </Col>
-//         </Row>
-
-//         {/* Image and Content Section */}
-//         <Row className="mb-5 align-items-center">
-//           <Col md={6} data-aos="fade-right">
-//             <div className="about-image-container">
-//               <img
-//                 src="https://www.slkkcc.edu.in/images/slkkcc%20college1.jpg"
-//                 alt="SDVS Sangh Campus"
-//                 className="img-fluid rounded shadow"
-//               />
-//             </div>
-//           </Col>
-//           <Col md={6} data-aos="fade-left" data-aos-delay="200">
-//             <h3 className="mb-4 green-title">Our Growth & Development</h3>
-//             <p className="about-text">
-//               S.D.V.S Sangh was blessed by the spirit of Siddh Samsthanmath,
-//               Nidasoshi. Whole hearted and selfless efforts of the management
-//               enabled the Sangh to secure a prominent and firm place in
-//               educational field in the North Karnataka. Generous donors provided
-//               a sound economic base to the Sangh.
-//             </p>
-//           </Col>
-//         </Row>
-
-//         {/* Contributors Section */}
-//         <Row className="mb-5">
-//           <Col lg={10} className="mx-auto">
-//             <div data-aos="fade-up">
-//               <h3 className="text-center mb-4 green-title">
-//                 Our Generous Contributors
-//               </h3>
-//               <p className="about-text">
-//                 Shrimant L. B. Sardesai of Vantamuri, Late Shri. S. S. Patil
-//                 (Khatedar) of Sankeshwar, His Holiness Shri Shivarudreshwar
-//                 Mahaswamiji of Gubbalgud, the Pattan Panchayat Committee of
-//                 Sankeshwar, Shri. L. K. Khot of Hebbal, Shri. M. S. Patil
-//                 (Khatedar) of Sankeshwar Shri Basagouda Patil of Amminbhavi have
-//                 contributed for the growth of the Sangh.
-//               </p>
-//             </div>
-//           </Col>
-//         </Row>
-
-//         {/* Leadership Section */}
-//         <Row className="mb-5">
-//           <Col md={6} data-aos="fade-right">
-//             <h3 className="mb-4 green-title">Visionary Leadership</h3>
-//             <p className="about-text">
-//               After the advent of Shri Appanagouda. Patil, a man of foresight
-//               and noble spirit the Sangh was steered up to ambitious heights.
-//               The S.D.V.S Sangh is heading towards new horizon under the able
-//               Presidentship of Shri. A. B. Patil, Ex. Minister, Government of
-//               Karnataka.
-//             </p>
-//           </Col>
-//           <Col md={6} data-aos="fade-left" data-aos-delay="200">
-//             <div className="about-image-container">
-//               <img
-//                 src="https://www.sdvsainursing.com/images/founders/Shri-Appanagouda-Patil.jpg"
-//                 alt="SDVS Sangh Leadership"
-//                 className="img-fluid rounded shadow"
-//               />
-//             </div>
-//           </Col>
-//         </Row>
-
-//         {/* Institutions Section */}
-//         <Row className="mb-5">
-//           <Col lg={10} className="mx-auto">
-//             <div data-aos="fade-up">
-//               <div className="text-center mb-5">
-//                 <h2 className="section-title">
-//                   Institutions Run By SDVS Sangh
-//                 </h2>
-//                 <p className="lead text-muted">
-//                   A Legacy of Educational Excellence Spanning Over 90 Years
-//                 </p>
-//               </div>
-
-//               <div className="institutions-table-container rounded shadow-sm">
-//                 <div className="table-responsive">
-//                   <table className="table table-hover institutions-table">
-//                     <thead>
-//                       <tr>
-//                         <th className="sl-no-column">Sl.No</th>
-//                         <th className="name-column">Name of Institution</th>
-//                         <th className="year-column">Year of Establishment</th>
-//                       </tr>
-//                     </thead>
-//                     <tbody>
-//                       {institutions.map((institution, index) => (
-//                         <tr
-//                           key={institution.id}
-//                           data-aos="fade-up"
-//                           data-aos-delay={index * 50}
-//                         >
-//                           <td className="sl-no-column">{index + 1}</td>
-//                           <td className="name-column">{institution.name}</td>
-//                           <td className="year-column">{institution.year}</td>
-//                         </tr>
-//                       ))}
-//                     </tbody>
-//                   </table>
-//                 </div>
-//               </div>
-//             </div>
-//           </Col>
-//         </Row>
-
-//         {/* Future Initiatives Section */}
-//         <Row className="mb-5">
-//           <Col lg={8} className="mx-auto">
-//             <div
-//               className="future-initiatives text-center py-5 px-4 rounded"
-//               data-aos="zoom-in"
-//             >
-//               <h3 className="mb-4 green-title">Future Initiatives</h3>
-//               <p className="about-text">
-//                 With many more plans on cards, besides the college of Business
-//                 Administration, BCA & BSW which have already been brought into
-//                 existence. The ITI and MBA colleges are the new feathers in the
-//                 cap of the Sangh. In the year 2018 Shri. L.K.Khot College of
-//                 Commerce has Started Master of Commerce (M.Com) Course.
-//               </p>
-//             </div>
-//           </Col>
-//         </Row>
-
-//         {/* Stats Section */}
-//         <Row className="text-center mb-5" data-aos="fade-up">
-//           <Col md={3} sm={6} className="mb-4">
-//             <div className="stat-card p-4 rounded shadow-sm">
-//               <h2 className="display-4 fw-bold green-text">90+</h2>
-//               <p className="mb-0">Years of Service</p>
-//             </div>
-//           </Col>
-//           <Col md={3} sm={6} className="mb-4">
-//             <div className="stat-card p-4 rounded shadow-sm">
-//               <h2 className="display-4 fw-bold green-text">20+</h2>
-//               <p className="mb-0">Institutions</p>
-//             </div>
-//           </Col>
-//           <Col md={3} sm={6} className="mb-4">
-//             <div className="stat-card p-4 rounded shadow-sm">
-//               <h2 className="display-4 fw-bold green-text">1000+</h2>
-//               <p className="mb-0">Students Impacted</p>
-//             </div>
-//           </Col>
-//           <Col md={3} sm={6} className="mb-4">
-//             <div className="stat-card p-4 rounded shadow-sm">
-//               <h2 className="display-4 fw-bold green-text">15+</h2>
-//               <p className="mb-0">Courses Offered</p>
-//             </div>
-//           </Col>
-//         </Row>
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default AboutSDVS;
-
-
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -417,7 +111,7 @@ const AboutSDVS = () => {
         
         .about-hero-section {
           background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                     url('https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg');
+                     url('bg_pic.jpeg');
           background-size: cover;
           background-position: center;
           padding: 80px 20px;
@@ -665,7 +359,7 @@ const AboutSDVS = () => {
           <div style={{ flex: "1", minWidth: "300px" }} data-aos="fade-down">
             <div className="about-image-container">
               <img
-                src="https://www.slkkcc.edu.in/images/slkkcc%20college1.jpg"
+                src="campus image.png"
                 alt="SDVS Sangh Campus"
                 style={{ width: "100%", borderRadius: "8px" }}
               />
@@ -731,7 +425,7 @@ const AboutSDVS = () => {
                 Institutions Run By SDVS Sangh
               </h2>
               <p style={{ fontSize: "18px", color: "#666" }}>
-                A Legacy of Educational Excellence Spanning Over 90 Years
+                A Legacy of Educational Excellence Spanning Over 98 Years
               </p>
             </div>
 
@@ -812,15 +506,15 @@ const AboutSDVS = () => {
         {/* Stats Section */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center", marginBottom: "50px" }} data-aos="fade-up">
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>
-            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>90+</h2>
+            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>98+</h2>
             <p style={{ margin: 0 }}>Years of Service</p>
           </div>
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>
-            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>20+</h2>
+            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>23+</h2>
             <p style={{ margin: 0 }}>Institutions</p>
           </div>
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>
-            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>1000+</h2>
+            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>100000+</h2>
             <p style={{ margin: 0 }}>Students Impacted</p>
           </div>
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>

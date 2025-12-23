@@ -511,7 +511,7 @@ const Faculty = () => {
         
         .faculty-hero-section {
           background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                     url('https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg');
+                     url('bg_pic.jpeg');
           background-size: cover;
           background-position: center;
           padding: 80px 20px;

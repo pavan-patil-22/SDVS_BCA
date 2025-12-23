@@ -81,7 +81,7 @@ const Contact = () => {
                 <h4 className="blue-title">Our Location</h4>
                 <p>
                   SDVS's BCA College<br />
-                  Near Bus Stand, Sankeshwar<br />
+                  Nipani Road, Sankeshwar<br />
                   Hukkeri Taluk, Belagavi Dist<br />
                   Karnataka - 591313
                 </p>
@@ -276,7 +276,7 @@ const Contact = () => {
         
         .contact-hero-section {
           background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                     url('https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg');
+                     url('bg_pic.jpeg');
           background-size: cover;
           background-position: center;
           padding: 80px 0;

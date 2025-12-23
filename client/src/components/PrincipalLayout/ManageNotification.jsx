@@ -27,8 +27,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { BASE_API_URL } from "../../BaseAPI";
 
-const API_URL = "http://localhost:8000/api/notifications";
+const API_URL = `${BASE_API_URL}/notifications`;
 
 const ManageNotification = () => {
   const [notifications, setNotifications] = useState([]);

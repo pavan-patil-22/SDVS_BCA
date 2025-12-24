@@ -37,11 +37,11 @@ const NotFoundPage = () => {
         <h1 className="title">Page Not Found</h1>
         
         <p className="message">
-          Oops! It seems you've ventured into uncharted territory. The page you're looking for doesn't exist.
+          Focus on building your career, not searching for missing pages.
         </p>
         
         <div className="campus-guide">
-          <p>Let us guide you back to our campus:</p>
+          <p>Let’s get you back to learning and growing:</p>
           <div className="navigation-links">
             <a href="/" className="nav-link">Home</a>
             <a href="/courses" className="nav-link">Courses</a>

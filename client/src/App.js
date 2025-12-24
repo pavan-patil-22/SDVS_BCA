@@ -1,6 +1,5 @@
-
 import GuestLayout from "./components/GuestLAyout/GuestLayout";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -31,6 +30,7 @@ import ManageNotification from "./components/PrincipalLayout/ManageNotification"
 import NotFoundPage from "./components/GuestLAyout/NotFoundPage ";
 import PrincipalDashboard from "./components/PrincipalLayout/PrincipalDashboard";
 import ChangePassword from "./components/PrincipalLayout/ChangePassword";
+import ProtectedRoute from "./components/Routes/ProtectedRoute";
 
 function App() {
   // useEffect(() => {
@@ -53,7 +53,6 @@ function App() {
   //     }
   //   };
   //   document.addEventListener("keydown", handleKeyDown);
-
 
   //   return () => {
   //     document.removeEventListener("contextmenu", handleContextMenu);
@@ -78,23 +77,24 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/placements" element={<GuestPlacementView />} />
-          <Route path="/chatbot" element={<Chatbot/>}/>
+          <Route path="/chatbot" element={<Chatbot />} />
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/principal" element={<PrincipalLayout />}>
+            <Route index element={<PrincipalDashboard />} />
+            <Route path="faculty" element={<ManageFaculty />} />
+            <Route path="facility" element={<ManageFacility />} />
+            <Route path="events" element={<ManageEvents />} />
+            <Route path="manage-gallery" element={<ManageGallery />} />
+            <Route path="manage-placement" element={<ManagePlacement />} />
+            <Route path="manage-eventnews" element={<ManageEventNews />} />
+            <Route path="guest-messages" element={<GuestMessage />} />
+            <Route path="manage-notifications"element={<ManageNotification />}/>
+            <Route path="change-password" element={<ChangePassword />} />
+          </Route>
         </Route>
 
-        <Route path="/Principal" element={<PrincipalLayout />}>
-          <Route index element={<PrincipalDashboard/>}/>
-          <Route path="faculty" element={<ManageFaculty />} />
-          <Route path="facility" element={<ManageFacility />} />
-          <Route path="events" element={<ManageEvents />} />
-          <Route path="manage-gallery" element={<ManageGallery />} />
-          <Route path="manage-placement" element={<ManagePlacement />} />
-          <Route path="manage-eventnews" element={<ManageEventNews />} />
-          <Route path="guest-messages" element={<GuestMessage/>}/>
-          <Route path="manage-notifications" element={<ManageNotification/>}/>
-          <Route path="change-password" element={<ChangePassword/>}/>
-        </Route>
-
-        <Route path="*" element={<NotFoundPage/>}/>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       {/* Toast Container */}

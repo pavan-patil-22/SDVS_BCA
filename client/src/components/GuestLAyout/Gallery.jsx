@@ -248,9 +248,9 @@ const Gallery = () => {
   }, []);
 
   // Refresh AOS whenever visibleCount changes
-  useEffect(() => {
-    AOS.refresh();
-  }, [visibleCount]);
+  // useEffect(() => {
+  //   AOS.refresh();
+  // }, [visibleCount]);
 
   const openModal = (gallery, index) => {
     setSelectedMedia(gallery);
@@ -304,8 +304,7 @@ const Gallery = () => {
                 <div
                   className="gallery-item"
                   key={gallery._id}
-                  data-aos="fade-up"
-                  data-aos-delay={(index % 10) * 100} // reset delay for each batch
+                  data-aos-delay={(index % 10) * 100} 
                   onClick={() => openModal(gallery, index)}
                 >
                   {isVideo(gallery) ? (

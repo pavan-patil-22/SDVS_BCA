@@ -3,12 +3,26 @@ import axios from "axios";
 import { Container } from "react-bootstrap";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FaTv } from "react-icons/fa";
+import { FaTv, FaWifi, FaBook, FaDesktop, FaFlask, FaUtensils, FaDumbbell, FaFirstAid } from "react-icons/fa";
 import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 
 const Facility = () => {
   const [facilities, setFacilities] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Icon mapping for different facility types
+  const getFacilityIcon = (title) => {
+    const titleLower = title.toLowerCase();
+    
+    if (titleLower.includes('library')) return <FaBook />;
+    if (titleLower.includes('computer') || titleLower.includes('lab')) return <FaDesktop />;
+    if (titleLower.includes('wifi') || titleLower.includes('internet')) return <FaWifi />;
+    if (titleLower.includes('science') || titleLower.includes('lab')) return <FaFlask />;
+    if (titleLower.includes('canteen') || titleLower.includes('cafeteria')) return <FaUtensils />;
+    if (titleLower.includes('gym') || titleLower.includes('sports')) return <FaDumbbell />;
+    if (titleLower.includes('medical') || titleLower.includes('health')) return <FaFirstAid />;
+    return <FaTv />; // default icon
+  };
 
   useEffect(() => {
     AOS.init({
@@ -18,7 +32,7 @@ const Facility = () => {
     
     const fetchFacilities = async () => {
       try {
-        const res = await axios.get( `${BASE_API_URL}/facilities`);
+        const res = await axios.get(`${BASE_API_URL}/facilities`);
         setFacilities(res.data);
       } catch (err) {
         console.error(err);
@@ -73,69 +87,50 @@ const Facility = () => {
             {facilities.map((f, index) => (
               <div
                 key={f._id}
-                className={`d-flex flex-column ${index % 2 === 0 ? "flex-md-row" : "flex-md-row-reverse"} align-items-center mb-5 position-relative facility-item`}
-                style={{ minHeight: "400px" }}
-                data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
+                className={`facility-item-wrapper ${index % 2 === 0 ? "facility-even" : "facility-odd"}`}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
-                {/* Text Card with overlapping effect */}
-                <div
-                  className="p-4 shadow bg-white facility-card"
-                  style={{
-                    flex: "0 0 55%",
-                    borderTop: "5px solid #f5a623",
-                    zIndex: 2,
-                    position: "relative",
-                    marginRight: index % 2 === 0 ? "-80px" : "0",
-                    marginLeft: index % 2 !== 0 ? "-80px" : "0",
-                    borderRadius: "8px",
-                  }}
-                >
-                  {/* Icon with background */}
-                  <div className="text-center mb-3 icon-container">
-                    <div className="icon-bg">
-                      <span style={{ fontSize: "24px", color: "#fff" }}><FaTv /></span>
+                <div className="facility-item">
+                  {/* Text Card */}
+                  <div className="facility-card">
+                    <div className="icon-container">
+                      <div className="icon-bg">
+                        <span style={{ fontSize: "24px", color: "#fff" }}>
+                          {getFacilityIcon(f.title)}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <h3 className="facility-title">{f.title}</h3>
+                    <p className="facility-description">
+                      {f.description}
+                    </p>
+                    
+                    <div className="facility-decoration">
+                      <div className="decoration-line"></div>
+                      <div className="decoration-dot"></div>
                     </div>
                   </div>
-                  
-                  <h3 className="fw-bold text-uppercase facility-title">{f.title}</h3>
-                  <p className="facility-description" style={{ lineHeight: "1.7", textAlign: "justify" }}>
-                    {f.description}
-                  </p>
-                  
-                  {/* Decorative elements */}
-                  <div className="facility-decoration">
-                    <div className="decoration-line"></div>
-                    <div className="decoration-dot"></div>
+
+                  {/* Image Container with 16:9 aspect ratio */}
+                  <div className="facility-image-wrapper">
+                    {f.image && (
+                      <div className="facility-image-container">
+                        <img
+                          src={`${Img_BASE_URL}${f.image}`}
+                          alt={f.title}
+                          className="facility-image"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://via.placeholder.com/600x338/1f3b88/ffffff?text=${encodeURIComponent(f.title)}`;
+                          }}
+                        />
+                        <div className="image-overlay"></div>
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                {/* Image with shadow and border */}
-                {f.image && (
-                  <div
-                    className="shadow facility-image-container"
-                    style={{
-                      flex: 1,
-                      zIndex: 1,
-                      borderRadius: "8px",
-                      overflow: "hidden",
-                      position: "relative",
-                    }}
-                  >
-                    <img
-                      src={`${Img_BASE_URL}${f.image}`}
-                      alt={f.title}
-                      className="facility-image"
-                      style={{
-                        width: "100%",
-                        height: "350px",
-                        objectFit: "cover",
-                      }}
-                    />
-                    
-                    {/* Image overlay effect */}
-                    <div className="image-overlay"></div>
-                  </div>
-                )}
               </div>
             ))}
           </>
@@ -210,23 +205,81 @@ const Facility = () => {
           background: #f5a623;
         }
         
-        .facility-item {
-          margin: 80px 0;
+        /* Facility Item Layout */
+        .facility-item-wrapper {
+          margin: 60px 0;
         }
         
+        .facility-item {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          position: relative;
+        }
+        
+        /* For desktop - side by side layout */
+        @media (min-width: 992px) {
+          .facility-item {
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+          }
+          
+          .facility-even .facility-card {
+            order: 1;
+          }
+          
+          .facility-even .facility-image-wrapper {
+            order: 2;
+          }
+          
+          .facility-odd .facility-card {
+            order: 2;
+          }
+          
+          .facility-odd .facility-image-wrapper {
+            order: 1;
+          }
+          
+          .facility-card {
+            flex: 0 0 55%;
+            margin-top: -40px;
+            z-index: 2;
+          }
+          
+          .facility-image-wrapper {
+            flex: 0 0 45%;
+          }
+          
+          .facility-even .facility-card {
+            margin-left: -40px;
+          }
+          
+          .facility-odd .facility-card {
+            margin-right: -40px;
+          }
+        }
+        
+        /* Facility Card */
         .facility-card {
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          background: white;
           padding: 30px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+          border-radius: 8px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          border-top: 5px solid #f5a623;
+          position: relative;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .facility-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+          box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .icon-container {
+          text-align: center;
           margin-top: -50px;
+          margin-bottom: 20px;
         }
         
         .icon-bg {
@@ -243,6 +296,7 @@ const Facility = () => {
         .facility-title {
           color: #1f3b88;
           font-size: 1.8rem;
+          font-weight: bold;
           margin: 15px 0;
           position: relative;
           padding-bottom: 10px;
@@ -261,6 +315,8 @@ const Facility = () => {
         .facility-description {
           color: #333;
           font-size: 1.05rem;
+          line-height: 1.7;
+          text-align: justify;
         }
         
         .facility-decoration {
@@ -285,14 +341,31 @@ const Facility = () => {
           background-color: #1f3b88;
         }
         
+        /* Image Container with 16:9 aspect ratio */
+        .facility-image-wrapper {
+          position: relative;
+        }
+        
         .facility-image-container {
+          position: relative;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+          border: 8px solid white;
           transition: transform 0.3s ease;
-          box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
-          border: 8px solid #fff;
+          aspect-ratio: 16/9; /* This ensures 16:9 aspect ratio */
+          width: 100%;
         }
         
         .facility-image-container:hover {
           transform: scale(1.03);
+        }
+        
+        .facility-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
         
         .image-overlay {
@@ -318,55 +391,155 @@ const Facility = () => {
         }
         
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 1199px) {
           .hero-title {
-            font-size: 2.8rem;
+            font-size: 3rem;
+          }
+          
+          .section-title {
+            font-size: 2.2rem;
+          }
+        }
+        
+        @media (max-width: 991px) {
+          .facilities-hero {
+            padding: 80px 0 60px;
+          }
+          
+          .hero-title {
+            font-size: 2.5rem;
           }
           
           .hero-subtitle {
             font-size: 1.1rem;
           }
           
+          .section-title {
+            font-size: 2rem;
+          }
+          
+          .facility-item {
+            gap: 20px;
+          }
+          
           .facility-card {
             margin: 0 !important;
-            flex: 0 0 100% !important;
-            margin-bottom: -40px !important;
-            z-index: 3;
+            padding: 25px;
+          }
+          
+          .icon-container {
+            margin-top: -40px;
           }
           
           .facility-image-container {
-            z-index: 1;
+            aspect-ratio: 16/9;
+            max-width: 100%;
+            margin: 0 auto;
           }
         }
         
         @media (max-width: 768px) {
-          .facilities-hero {
-            padding: 80px 0 60px;
-          }
-          
           .hero-title {
-            font-size: 2.3rem;
+            font-size: 2.2rem;
           }
           
-          .facility-card {
-            margin: 0 !important;
-            flex: 0 0 100% !important;
-            margin-bottom: -40px !important;
-            z-index: 3;
+          .section-title {
+            font-size: 1.8rem;
+          }
+          
+          .facility-title {
+            font-size: 1.6rem;
+          }
+          
+          .facility-description {
+            font-size: 1rem;
+          }
+          
+          .facility-image-container {
+            aspect-ratio: 16/9;
+            max-width: 100%;
           }
         }
         
         @media (max-width: 576px) {
+          .facilities-hero {
+            padding: 70px 0 50px;
+          }
+          
           .hero-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
           }
           
           .hero-subtitle {
             font-size: 1rem;
+            padding: 0 15px;
           }
           
           .section-title {
-            font-size: 2rem;
+            font-size: 1.6rem;
+          }
+          
+          .facility-card {
+            padding: 20px;
+          }
+          
+          .icon-container {
+            margin-top: -35px;
+          }
+          
+          .icon-bg {
+            width: 50px;
+            height: 50px;
+          }
+          
+          .facility-title {
+            font-size: 1.4rem;
+          }
+          
+          .facility-image-container {
+            aspect-ratio: 16/9;
+            border-width: 5px;
+          }
+          
+          .facility-description {
+            font-size: 0.95rem;
+          }
+        }
+        
+        @media (max-width: 400px) {
+          .hero-title {
+            font-size: 1.6rem;
+          }
+          
+          .section-title {
+            font-size: 1.4rem;
+          }
+          
+          .facility-title {
+            font-size: 1.3rem;
+          }
+        }
+        
+        /* Ensure images maintain 16:9 on all devices */
+        .facility-image-container {
+          aspect-ratio: 16/9;
+          width: 100%;
+        }
+        
+        /* Fallback for browsers that don't support aspect-ratio */
+        @supports not (aspect-ratio: 16/9) {
+          .facility-image-container::before {
+            content: '';
+            display: block;
+            padding-top: 56.25%; /* 9/16 = 0.5625 = 56.25% */
+          }
+          
+          .facility-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
           }
         }
       `}</style>

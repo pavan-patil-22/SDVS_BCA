@@ -59,7 +59,7 @@ const Home = () => {
       text: "Building Future Leaders.",
     },
     {
-      image: "https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg",
+      image: "Library3.JPG",
       text: "Innovative Learning Environment.",
     },
     {
@@ -73,27 +73,12 @@ const Home = () => {
     {
       src: "https://cdn-icons-png.flaticon.com/512/724/724664.png",
       alt: "Call",
-      link: "tel:9110413455",
+      link: "tel:9448636015                   ",
     },
     {
       src: "https://cdn-icons-png.flaticon.com/512/733/733585.png",
       alt: "WhatsApp",
-      link: "https://wa.me/9110413455",
-    },
-    {
-      src: "https://cdn-icons-png.flaticon.com/512/733/733547.png",
-      alt: "Facebook",
-      link: "https://facebook.com",
-    },
-    {
-      src: "https://cdn-icons-png.flaticon.com/512/145/145807.png",
-      alt: "LinkedIn",
-      link: "https://www.linkedin.com/in/pavan-patil-279183369/",
-    },
-    {
-      src: "https://cdn-icons-png.flaticon.com/512/1384/1384060.png",
-      alt: "YouTube",
-      link: "https://youtube.com",
+      link: "https://wa.me/9448636015                   ",
     },
     {
       src: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
@@ -167,7 +152,7 @@ const Home = () => {
     "Library": {
       title: "Library",
       description: "Our sustainable and thoughtfully designed library supports deep learning and well-being in a calm, inspiring environment.",
-      image: 'bg_pic.jpeg'
+      image: 'Library3.JPG'
     },
     "Sports & Grounds": {
       title: "Sports & Grounds",

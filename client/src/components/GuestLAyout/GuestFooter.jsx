@@ -764,7 +764,7 @@ const GuestFooter = () => {
               gap: "8px",
             }}
           >
-            <FaPhone color="#0df5f5ff" /> +91 9110413455
+            <FaPhone color="#0df5f5ff" /> +91 9448636015
           </p>
           <p
             style={{

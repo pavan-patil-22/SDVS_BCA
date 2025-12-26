@@ -3,13 +3,15 @@ import Faculty from "../models/Faculty.js";
 //***********************CREATE Faculty**************************//
 export const createFaculty = async (req, res) => {
   try {
-    const { name, role, education, experience } = req.body;
+    const { name, role, education, experience, employmentType, teachingType } = req.body;
 
     const faculty = new Faculty({
       name,
       role,
       education,
       experience,
+      employmentType,
+      teachingType,
       picture: req.file ? req.file.path : null,
     });
 
@@ -44,9 +46,9 @@ export const getFacultyById = async (req, res) => {
 // **************************UPDATE Faculty**************************//
 export const updateFaculty = async (req, res) => {
   try {
-    const { name, role, education, experience } = req.body;
+    const { name, role, education, experience, employmentType, teachingType } = req.body;
 
-    const updatedData = { name, role, education, experience };
+    const updatedData = { name, role, education, experience, employmentType, teachingType };
     if (req.file) updatedData.picture = req.file.path;
 
     const faculty = await Faculty.findByIdAndUpdate(req.params.id, updatedData, {

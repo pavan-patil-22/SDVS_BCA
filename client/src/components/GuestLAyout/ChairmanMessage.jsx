@@ -91,12 +91,12 @@ const ChairmanMessage = () => {
         }
         
         .chairman-photo-container {
-          width: 250px;
-          height: 250px;
+          width: 262px;
+          height: 350px;
           overflow: hidden;
-          border-radius: 50%;
           border: 5px solid #fff;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
         }
         
         .chairman-photo-container img {
@@ -181,7 +181,7 @@ const ChairmanMessage = () => {
           
           .chairman-photo-container {
             width: 200px;
-            height: 200px;
+            height: 267px;
           }
         }
       `}</style>
@@ -211,9 +211,9 @@ const ChairmanMessage = () => {
           <Col md={4} className="text-center mb-4" data-aos="fade-up">
             <div className="chairman-photo-container mx-auto">
               <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM6qAgaBL5zwmfccVIsCRhvQ8tE4_yrjgbMg&s" 
+                src="president a.b.patil.jpg" 
                 alt="Shri. A.B. Patil" 
-                className="img-fluid rounded-circle shadow"
+                className="img-fluid shadow"
               />
             </div>
             <div className="mt-4" data-aos="fade-up" data-aos-delay="200">
@@ -257,45 +257,7 @@ const ChairmanMessage = () => {
           </Col>
         </Row>
 
-        {/* Achievements Section */}
-        <Row className="text-center mb-5" data-aos="fade-up">
-          <Col md={3} sm={6} className="mb-4">
-            <div className="achievement-card p-4 rounded shadow-sm">
-              <div className="achievement-icon mb-3">
-                <i className="fas fa-university fa-2x green-text"></i>
-              </div>
-              <h4 className="fw-bold">18+</h4>
-              <p className="mb-0">Institutions</p>
-            </div>
-          </Col>
-          <Col md={3} sm={6} className="mb-4">
-            <div className="achievement-card p-4 rounded shadow-sm">
-              <div className="achievement-icon mb-3">
-                <i className="fas fa-graduation-cap fa-2x green-text"></i>
-              </div>
-              <h4 className="fw-bold">7000+</h4>
-              <p className="mb-0">Students</p>
-            </div>
-          </Col>
-          <Col md={3} sm={6} className="mb-4">
-            <div className="achievement-card p-4 rounded shadow-sm">
-              <div className="achievement-icon mb-3">
-                <i className="fas fa-award fa-2x green-text"></i>
-              </div>
-              <h4 className="fw-bold">15+</h4>
-              <p className="mb-0">Years Leadership</p>
-            </div>
-          </Col>
-          <Col md={3} sm={6} className="mb-4">
-            <div className="achievement-card p-4 rounded shadow-sm">
-              <div className="achievement-icon mb-3">
-                <i className="fas fa-vote-yea fa-2x green-text"></i>
-              </div>
-              <h4 className="fw-bold">3</h4>
-              <p className="mb-0">Times Elected</p>
-            </div>
-          </Col>
-        </Row>
+        
 
         {/* Quote Section */}
         <Row className="mb-5">

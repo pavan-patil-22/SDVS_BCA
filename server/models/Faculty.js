@@ -21,6 +21,16 @@ const facultySchema = new mongoose.Schema(
       type: String,
       required: true, 
     },
+    employmentType: {
+      type: String,
+      required: true,
+      enum: ['Full Time', 'Part Time'],
+    },
+    teachingType: {
+      type: String,
+      required: true,
+      enum: ['Teaching', 'Non Teaching'],
+    },
   },
   { timestamps: true }
 );

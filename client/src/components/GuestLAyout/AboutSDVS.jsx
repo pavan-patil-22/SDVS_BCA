@@ -96,6 +96,34 @@ const AboutSDVS = () => {
     },
   ];
 
+  // Founders data
+  const founders = [
+    { 
+      id: 1, 
+      name: "Shri. Nijalingeshwar Mahaswamiji", 
+      position: "Durdundeshwar Math, Nidasoshi",
+      image: "shri nijalingeshwar_mahaswamiji.PNG" 
+    },
+    { 
+      id: 2, 
+      name: "Shri. Shivarudreshwar Mahaswamiji", 
+      position: "Gubbalagudda Math, Ghatanrabha",
+      image: "shivarudreshwar mahaswamiji gubbalagudd ghataprabha.JPG" 
+    },
+    { 
+      id: 3, 
+      name: "Late Shri. Appanagouda Patil", 
+      position: "Sankeshwar",
+      image: "appanagouda patil.PNG"
+    },
+    { 
+      id: 4, 
+      name: "Late Shri. Basagouda A. Patil", 
+      position: "Amminbavi",
+      image: "basagouda patil.PNG"
+    },
+  ];
+
   const displayedInstitutions = showAllInstitutions 
     ? institutions 
     : institutions.slice(0, 10);
@@ -280,6 +308,79 @@ const AboutSDVS = () => {
           font-weight: bold;
         }
         
+        /* Founders Section Styles */
+        .founders-section {
+          margin-bottom: 50px;
+        }
+        
+        .founders-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+          margin-top: 30px;
+        }
+        
+        .founder-card {
+          background: white;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .founder-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .founder-image-container {
+          height: 250px;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .founder-image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+        
+        .founder-card:hover .founder-image-container img {
+          transform: scale(1.05);
+        }
+        
+        .founder-info {
+          padding: 20px;
+          text-align: center;
+        }
+        
+        .founder-name {
+          font-size: 18px;
+          font-weight: bold;
+          color: #1f3b88;
+          margin-bottom: 8px;
+          line-height: 1.4;
+        }
+        
+        .founder-position {
+          font-size: 14px;
+          color: #666;
+          line-height: 1.4;
+          font-style: italic;
+        }
+        
+        @media (max-width: 992px) {
+          .founders-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+          
+          .founder-image-container {
+            height: 220px;
+          }
+        }
+        
         @media (max-width: 768px) {
           .about-hero-section {
             padding: 60px 15px;
@@ -311,6 +412,36 @@ const AboutSDVS = () => {
           
           .stat-card {
             margin-bottom: 15px;
+          }
+          
+          .founders-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+          }
+          
+          .founder-image-container {
+            height: 200px;
+          }
+          
+          .founder-name {
+            font-size: 16px;
+          }
+          
+          .founder-position {
+            font-size: 13px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .founders-grid {
+            grid-template-columns: 1fr;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          
+          .founder-image-container {
+            height: 250px;
           }
         }
       `}</style>
@@ -359,7 +490,7 @@ const AboutSDVS = () => {
           <div style={{ flex: "1", minWidth: "300px" }} data-aos="fade-down">
             <div className="about-image-container">
               <img
-                src="campus image.png"
+                src="s.d.v.s sangh office.JPG"
                 alt="SDVS Sangh Campus"
                 style={{ width: "100%", borderRadius: "8px" }}
               />
@@ -374,6 +505,50 @@ const AboutSDVS = () => {
               educational field in the North Karnataka. Generous donors provided
               a sound economic base to the Sangh.
             </p>
+          </div>
+        </div>
+
+        {/* OUR FOUNDERS Section */}
+        <div className="founders-section">
+          <div data-aos="fade-up">
+            <div style={{ textAlign: "center", marginBottom: "40px" }}>
+              <h2 className="section-title">OUR FOUNDERS</h2>
+              <p style={{ fontSize: "18px", color: "#666" }}>
+                Visionary Leaders Who Built the Foundation
+              </p>
+            </div>
+            
+            <div data-aos="fade-up" data-aos-delay="200" style={{ maxWidth: "1000px", margin: "0 auto 40px" }}>
+              <p className="about-text">
+                Generous donors provided a sound economic base to the Sangh. 
+                Shrimant L. B. Sardesai of Vantamuri, Late Shri. S. S. Patil (Khatedar) 
+                of Sankeshwar, His Holiness Shri Shivarudreshwar Mahaswamiji of Gubbalgud, 
+                the Pattan Panchayat Committee of Sankeshwar and Shri Appanagouda Patil 
+                have taken lots of pains to establish the institution.
+              </p>
+            </div>
+            
+            {/* Founders Grid */}
+            <div className="founders-grid" data-aos="zoom-in" data-aos-delay="300">
+              {founders.map((founder) => (
+                <div key={founder.id} className="founder-card">
+                  <div className="founder-image-container">
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://via.placeholder.com/300x250/1f3b88/ffffff?text=" + encodeURIComponent(founder.name.substring(0, 1));
+                      }}
+                    />
+                  </div>
+                  <div className="founder-info">
+                    <div className="founder-name">{founder.name}</div>
+                    <div className="founder-position">{founder.position}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -409,7 +584,7 @@ const AboutSDVS = () => {
           <div style={{ flex: "1", minWidth: "300px" }} data-aos="fade-down" data-aos-delay="200">
             <div className="about-image-container">
               <img
-                src="https://www.sdvsainursing.com/images/founders/Shri-Appanagouda-Patil.jpg"
+                src="appanagouda patil.PNG"
                 alt="SDVS Sangh Leadership"
                 style={{ width: "100%", borderRadius: "8px" }}
               />
@@ -510,7 +685,7 @@ const AboutSDVS = () => {
             <p style={{ margin: 0 }}>Years of Service</p>
           </div>
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>
-            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>23+</h2>
+            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>21+</h2>
             <p style={{ margin: 0 }}>Institutions</p>
           </div>
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>
@@ -518,7 +693,7 @@ const AboutSDVS = () => {
             <p style={{ margin: 0 }}>Students Impacted</p>
           </div>
           <div className="stat-card" style={{ flex: "1", minWidth: "200px", padding: "30px", textAlign: "center" }}>
-            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>15+</h2>
+            <h2 style={{ fontSize: "42px", fontWeight: "bold", color: "#1f3b88", margin: "0 0 10px 0" }}>12+</h2>
             <p style={{ margin: 0 }}>Courses Offered</p>
           </div>
         </div>

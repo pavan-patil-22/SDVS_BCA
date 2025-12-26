@@ -97,9 +97,9 @@ const Contact = () => {
                 </div>
                 <h4 className="blue-title">Call Us</h4>
                 <p>
-                  Office: +91-8330-123456<br />
-                  Principal: +91-9876543210<br />
-                  Fax: +91-8330-123456
+                  Office: +91-9448636015<br />
+                  Principal: +91-9448636015<br />
+                  HOD: +91-8147947926
                 </p>
               </Card.Body>
             </Card>
@@ -113,9 +113,9 @@ const Contact = () => {
                 </div>
                 <h4 className="blue-title">Email Us</h4>
                 <p>
-                  info@sdvsbca.edu.in<br />
-                  principal@sdvsbca.edu.in<br />
-                  admissions@sdvsbca.edu.in
+                 Office: sdvsbca2007@gmail.com <br />
+                  Principal: bihebbali@gmail.com <br />
+                  HOD: ranjanamagadum21166@gmail.com
                 </p>
               </Card.Body>
             </Card>
@@ -250,18 +250,11 @@ const Contact = () => {
               <h3 className="mb-4 blue-title">Connect With Us</h3>
               <p className="mb-4">Follow our social media channels to stay updated with the latest news and events</p>
               <div className="social-icons d-flex justify-content-center">
-                <a href="#" className="social-link mx-3">
-                  <FaFacebook className="fa-2x" style={{ color: '#1f3b88' }} />
-                </a>
-                <a href="#" className="social-link mx-3">
-                  <FaTwitter className="fa-2x" style={{ color: '#1f3b88' }} />
-                </a>
-                <a href="#" className="social-link mx-3">
+               
+                <a href="https://instagram.com/sdvss_bca_sankeshwar" className="social-link mx-3">
                   <FaInstagram className="fa-2x" style={{ color: '#1f3b88' }} />
                 </a>
-                <a href="#" className="social-link mx-3">
-                  <FaLinkedin className="fa-2x" style={{ color: '#1f3b88' }} />
-                </a>
+                
               </div>
             </div>
           </Col>

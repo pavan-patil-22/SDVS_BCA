@@ -31,6 +31,7 @@ import NotFoundPage from "./components/GuestLAyout/NotFoundPage ";
 import PrincipalDashboard from "./components/PrincipalLayout/PrincipalDashboard";
 import ChangePassword from "./components/PrincipalLayout/ChangePassword";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import AboutCollege from "./components/GuestLAyout/AboutCollege";
 
 function App() {
   // useEffect(() => {
@@ -72,6 +73,7 @@ function App() {
           <Route path="/facilities" element={<Facility />} />
           <Route path="/events" element={<Events />} />
           <Route path="/about-sdvs" element={<AboutSDVS />} />
+          <Route path="/about-college" element={<AboutCollege/>}/>
           <Route path="/principal-message" element={<PrincipalMessage />} />
           <Route path="/chairmans-message" element={<ChairmanMessage />} />
           <Route path="/contact" element={<Contact />} />

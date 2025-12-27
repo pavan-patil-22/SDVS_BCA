@@ -47,7 +47,7 @@ const Home = () => {
   const slides = [
     {
       image: "collage.jpg",
-      text: "Epitome Of Excellence.",
+      text: "Epitome Of Excellence   dfffffffffffffffffffffffffffffffffffffffffffffffff.",
     },
     {
       image:

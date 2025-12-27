@@ -385,7 +385,7 @@ const PrincipalMessage = () => {
             {/* 16:9 Aspect Ratio Image */}
             <div className="principal-image-container mx-auto">
               <img 
-                src="principal-bca.jpg" 
+                src="Principal.JPG" 
                 alt="Prof. B I Hebbali" 
                 className="img-fluid"
                 onError={(e) => {

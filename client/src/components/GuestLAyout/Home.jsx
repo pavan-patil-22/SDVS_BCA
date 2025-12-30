@@ -656,21 +656,13 @@ const Home = () => {
           flexWrap: "wrap",
           justifyContent: isMobile ? "center" : "flex-end"
         }}>
-          <img
-            src="https://www.presidencycollege.ac.in/assets/frontend/images/accr/recognized.webp"
-            alt="UGC"
-            style={{ height: isMobile ? "60px" : "80px", objectFit: "contain" }}
-          />
+          
           <img
             src="https://tse2.mm.bing.net/th/id/OIP.zULu3PJC9TnpyU7vv5LKIAHaFf?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
             alt="NAAC"
             style={{ height: isMobile ? "60px" : "80px", objectFit: "contain" }}
           />
-          <img
-            src="https://www.presidencycollege.ac.in/assets/frontend/images/accr/permanently.webp"
-            alt="NAAC"
-            style={{ height: isMobile ? "60px" : "80px", objectFit: "contain" }}
-          />
+          
         </div>
       </div>
 

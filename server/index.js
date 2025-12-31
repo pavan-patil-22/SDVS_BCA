@@ -63,12 +63,6 @@
 
 
 
-
-
-
-
-
-
   import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -91,52 +85,36 @@ dotenv.config();
 
 const app = express();
 
-/* =======================
-   ✅ CORS CONFIG (FIXED)
-======================= */
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://sdvs-bca.vercel.app",
-  "https://www.sdvssbcaskn.com",
-  "https://sdvssbcaskn.com",
-];
-
+/* ===============================
+   ✅ CORS CONFIG (ANY FRONTEND)
+================================ */
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow server-to-server & Postman
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS not allowed for this origin"));
-      }
-    },
-    credentials: true,
+    origin: true,          // 🔥 allow any frontend
+    credentials: true,     // 🔥 required for login / cookies
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// 🔥 Preflight support (VERY IMPORTANT)
+// 🔥 REQUIRED for POST / login (preflight)
 app.options("*", cors());
 
-/* =======================
+/* ===============================
    Middlewares
-======================= */
+================================ */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-/* =======================
+/* ===============================
    Static Files
-======================= */
+================================ */
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-/* =======================
+/* ===============================
    Routes
-======================= */
+================================ */
 app.use("/api/principal", principalRouter);
 app.use("/api/faculty", facultyRouter);
 app.use("/api/facilities", facilityRoutes);
@@ -147,16 +125,16 @@ app.use("/api/events-news", eventNewsRouter);
 app.use("/api/contact-message", contactMessageRouter);
 app.use("/api/notifications", notificationRouter);
 
-/* =======================
+/* ===============================
    Health Check
-======================= */
+================================ */
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
 
-/* =======================
-   DB + Server
-======================= */
+/* ===============================
+   Database & Server
+================================ */
 const PORT = process.env.PORT || 7000;
 const MONGO_URL = process.env.MONGOURL;
 
@@ -168,6 +146,6 @@ mongoose
       console.log(`🚀 Server running on port ${PORT}`);
     });
   })
-  .catch((err) => {
-    console.error("❌ DB connection error:", err);
+  .catch((error) => {
+    console.error("❌ DB connection error:", error);
   });

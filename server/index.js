@@ -16,8 +16,8 @@ import notificationRrouter from "./routes/notificationRoutes.js";
 
 const app = express();
 app.use(cors({
-  origin: true,
-  // origin: ["http://localhost:3000", "https://sdvs-bca.vercel.app","https://www.sdvssbcaskn.com", "https://sdvssbcaskn.com" ],
+  // origin: true,
+   origin: ["http://localhost:3000", "https://sdvs-bca.vercel.app","https://www.sdvssbcasnk.com", "https://sdvssbcasnk.com" ],
   credentials: true
 }));
 app.use(express.json());

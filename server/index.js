@@ -1,76 +1,9 @@
-  // import express from "express";
-  // import cors from "cors";
-  // import mongoose from "mongoose";
-  // import dotenv from "dotenv";
-  // import bodyParser from "body-parser";
-  // import path from "path";
-  // import principalRouter from "./routes/principalRoutes.js";
-  // import facultyRouter from "./routes/facultyRoutes.js";
-  // import facilityRoutes from "./routes/facilityRoutes.js";
-  // import eventRouter from "./routes/eventRoutes.js";
-  // import galleryRouter from "./routes/galleryRoutes.js";
-  // import placementRouter from "./routes/placementRoutes.js";
-  // import eventNewsRouter from "./routes/eventNewsRoutes.js";
-  // import contactMessageRouter from "./routes/contactRoutes.js";
-  // import notificationRrouter from "./routes/notificationRoutes.js";
-
-  // const app = express();
-  // app.use(cors({
-  //   origin: ["http://localhost:3000", "https://sdvs-bca.vercel.app","https://www.sdvssbcaskn.com", "https://sdvssbcaskn.com" ],
-  //   credentials: true
-  // }));
-  // app.use(express.json());
-  // app.use(express.urlencoded({ extended: true }));
-
-  // app.use(bodyParser.json());
-  // app.use(cors());
-
-
-  // //##################### BACKEND API ######################//
-  // app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
-  // app.use("/api/principal", principalRouter);
-  // app.use("/api/faculty", facultyRouter);
-  // app.use("/api/facilities", facilityRoutes);
-  // app.use("/api/events",eventRouter);
-  // app.use("/api/gallery",galleryRouter);
-  // app.use("/api/placements",placementRouter);
-  // app.use("/api/events-news",eventNewsRouter);
-  // app.use("/api/contact-message", contactMessageRouter);
-  // app.use("/api/notifications", notificationRrouter);
-  // app.get("/health", (req, res) => {
-  //   res.status(200).send("OK");
-  // });
-
-
-
-
-
-
-
-
-  // dotenv.config();
-  // const PORT = process.env.PORT || 7000;
-  // const URL = process.env.MONGOURL;
-  // mongoose
-  //   .connect(URL)
-  //   .then(() => {
-  //     console.log("DB connected Successfully");
-  //     app.listen(PORT, () => {
-  //       console.log(`Server is runniing on Port:${PORT}`);
-  //     });
-  //   })
-  //   .catch((error) => console.log(error));
-
-
-
-  import express from "express";
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import path from "path";
-
-// Routes
 import principalRouter from "./routes/principalRoutes.js";
 import facultyRouter from "./routes/facultyRoutes.js";
 import facilityRoutes from "./routes/facilityRoutes.js";
@@ -79,73 +12,52 @@ import galleryRouter from "./routes/galleryRoutes.js";
 import placementRouter from "./routes/placementRoutes.js";
 import eventNewsRouter from "./routes/eventNewsRoutes.js";
 import contactMessageRouter from "./routes/contactRoutes.js";
-import notificationRouter from "./routes/notificationRoutes.js";
-
-dotenv.config();
+import notificationRrouter from "./routes/notificationRoutes.js";
 
 const app = express();
-
-/* ===============================
-   ✅ CORS CONFIG (ANY FRONTEND)
-================================ */
-app.use(
-  cors({
-    origin: true,          // 🔥 allow any frontend
-    credentials: true,     // 🔥 required for login / cookies
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-// 🔥 REQUIRED for POST / login (preflight)
-app.options("*", cors());
-
-/* ===============================
-   Middlewares
-================================ */
+app.use(cors({
+  origin: true,
+  // origin: ["http://localhost:3000", "https://sdvs-bca.vercel.app","https://www.sdvssbcaskn.com", "https://sdvssbcaskn.com" ],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(bodyParser.json());
+app.use(cors());
 
-/* ===============================
-   Static Files
-================================ */
+
+//##################### BACKEND API ######################//
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
-
-/* ===============================
-   Routes
-================================ */
 app.use("/api/principal", principalRouter);
 app.use("/api/faculty", facultyRouter);
 app.use("/api/facilities", facilityRoutes);
-app.use("/api/events", eventRouter);
-app.use("/api/gallery", galleryRouter);
-app.use("/api/placements", placementRouter);
-app.use("/api/events-news", eventNewsRouter);
+app.use("/api/events",eventRouter);
+app.use("/api/gallery",galleryRouter);
+app.use("/api/placements",placementRouter);
+app.use("/api/events-news",eventNewsRouter);
 app.use("/api/contact-message", contactMessageRouter);
-app.use("/api/notifications", notificationRouter);
-
-/* ===============================
-   Health Check
-================================ */
+app.use("/api/notifications", notificationRrouter);
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
 
-/* ===============================
-   Database & Server
-================================ */
-const PORT = process.env.PORT || 7000;
-const MONGO_URL = process.env.MONGOURL;
 
+
+
+
+
+
+
+dotenv.config();
+const PORT = process.env.PORT || 7000;
+const URL = process.env.MONGOURL;
 mongoose
-  .connect(MONGO_URL)
+  .connect(URL)
   .then(() => {
-    console.log("✅ MongoDB connected");
+    console.log("DB connected Successfully");
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`Server is runniing on Port:${PORT}`);
     });
   })
-  .catch((error) => {
-    console.error("❌ DB connection error:", error);
-  });
+  .catch((error) => console.log(error));

@@ -429,7 +429,8 @@ const GuestNavbar = () => {
       
       <div className="logo">
         <img 
-          src="https://thfvnext.bing.com/th/id/OIP.UtneUDXsACp3MrIN9PXfYQHaFF?w=263&h=181&c=7&r=0&o=7&cb=thfvnext&dpr=1.3&pid=1.7&rm=3" 
+          // src="https://thfvnext.bing.com/th/id/OIP.UtneUDXsACp3MrIN9PXfYQHaFF?w=263&h=181&c=7&r=0&o=7&cb=thfvnext&dpr=1.3&pid=1.7&rm=3" 
+          src="logo-sdvs.png" 
           alt="Logo" 
         />
         <div className="logo-text">

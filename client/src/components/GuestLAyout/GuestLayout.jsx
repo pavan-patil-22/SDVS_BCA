@@ -64,6 +64,7 @@
 
 
 import React, { useEffect, useState } from "react";
+import { FaDownload } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 import GuestHeader from "./GuestHeader";
 import GuestFooter from "./GuestFooter";
@@ -90,6 +91,16 @@ const GuestLayout = () => {
     }
   };
 
+  const handleDownloadBrochure = () => {
+    // Create a link element
+    const link = document.createElement("a");
+    link.href = "/college_brochure.pdf"; // Path to PDF in public folder
+    link.download = "SDVS_BCA_College_Brochure.pdf"; // Download filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div
       style={{
@@ -112,7 +123,7 @@ const GuestLayout = () => {
             backgroundColor: "rgba(0, 0, 0, 0.85)",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: isMobile ? "flex-start" : "center",
             zIndex: 1000,
             backdropFilter: "blur(3px)",
             padding: "20px",
@@ -124,34 +135,99 @@ const GuestLayout = () => {
             style={{
               backgroundColor: "transparent",
               borderRadius: "12px",
-              maxWidth: isMobile ? "100%" : "70%", // Reduced from 90% to 70% on desktop
+              maxWidth: isMobile ? "100%" : "70%",
               minWidth: isMobile ? "100%" : "auto",
               maxHeight: "none",
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              gap: isMobile ? "20px" : "15px", // Reduced gap on desktop
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              padding: isMobile ? "80px 15px 30px 15px" : "10px", // Reduced padding on desktop
-              marginTop: isMobile ? "30px" : "0",
+              padding: isMobile ? "100px 15px 30px 15px" : "10px",
+              marginTop: isMobile ? "40px" : "0",
             }}
           >
+            {/* Images Container */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: isMobile ? "column" : "row",
+                gap: isMobile ? "20px" : "15px",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              {/* Banner 1 */}
+              <div
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                  width: isMobile ? "100%" : "auto",
+                  maxWidth: isMobile ? "100%" : "48%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src="/banner1.jpeg"
+                  alt="Banner 1 - Key Features & Career Opportunities"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    maxHeight: isMobile ? "auto" : "70vh",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+
+              {/* Banner 2 */}
+              <div
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                  width: isMobile ? "100%" : "auto",
+                  maxWidth: isMobile ? "100%" : "48%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src="/banner2.jpeg"
+                  alt="Banner 2 - Infrastructure, Medal Winners, Placements"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    maxHeight: isMobile ? "auto" : "70vh",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+            </div>
+
             {/* Close button */}
             <button
               onClick={handleCloseModal}
               style={{
                 position: isMobile ? "fixed" : "absolute",
-                top: isMobile ? "20px" : "-35px", // Adjusted close button position
-                right: isMobile ? "20px" : "-8px", // Adjusted close button position
+                top: isMobile ? "15px" : "-35px",
+                right: isMobile ? "15px" : "-8px",
                 background: "white",
                 border: "none",
-                fontSize: isMobile ? "24px" : "24px",
+                fontSize: isMobile ? "20px" : "24px",
                 fontWeight: "bold",
                 cursor: "pointer",
                 color: "#333",
-                width: isMobile ? "44px" : "32px", // Smaller button on desktop
-                height: isMobile ? "44px" : "32px", // Smaller button on desktop
+                width: isMobile ? "36px" : "32px",
+                height: isMobile ? "36px" : "32px",
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
@@ -177,59 +253,78 @@ const GuestLayout = () => {
               ✕
             </button>
 
-            {/* Banner 1 */}
-            <div
-              style={{
-                backgroundColor: "white",
-                borderRadius: "8px",
-                overflow: "hidden",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                width: isMobile ? "100%" : "auto",
-                maxWidth: isMobile ? "100%" : "48%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src="/banner1.jpeg"
-                alt="Banner 1 - Key Features & Career Opportunities"
+            {/* Download Icon - Only on Mobile, below close button */}
+            {isMobile && (
+              <button
+                onClick={handleDownloadBrochure}
                 style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  maxHeight: isMobile ? "auto" : "70vh", // Limit height on desktop
-                  objectFit: "contain",
+                  position: "fixed",
+                  top: "60px",
+                  right: "15px",
+                  background: "#4CAF50",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "white",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+                  zIndex: 1001,
+                  transition: "all 0.2s ease",
+                  fontSize: "18px",
                 }}
-              />
-            </div>
+                aria-label="Download Brochure"
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#45a049";
+                  e.target.style.transform = "scale(1.05)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#4CAF50";
+                  e.target.style.transform = "scale(1)";
+                }}
+              >
+                <FaDownload />
+              </button>
+            )}
 
-            {/* Banner 2 */}
-            <div
-              style={{
-                backgroundColor: "white",
-                borderRadius: "8px",
-                overflow: "hidden",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-                width: isMobile ? "100%" : "auto",
-                maxWidth: isMobile ? "100%" : "48%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src="/banner2.jpeg"
-                alt="Banner 2 - Infrastructure, Medal Winners, Placements"
+            {/* Download Button - Desktop only */}
+            {!isMobile && (
+              <button
+                onClick={handleDownloadBrochure}
                 style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  maxHeight: isMobile ? "auto" : "70vh", // Limit height on desktop
-                  objectFit: "contain",
+                  marginTop: "20px",
+                  padding: "10px 20px",
+                  backgroundColor: "#4CAF50",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
                 }}
-              />
-            </div>
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#45a049";
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 4px 15px rgba(0,0,0,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#4CAF50";
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "0 2px 10px rgba(0,0,0,0.2)";
+                }}
+              >
+                <span style={{ fontSize: "18px" }}><FaDownload /></span>
+                Download College Brochure
+              </button>
+            )}
           </div>
         </div>
       )}

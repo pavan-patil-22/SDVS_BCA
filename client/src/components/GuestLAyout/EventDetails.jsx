@@ -7,6 +7,8 @@ import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+const DEFAULT_EVENT_IMAGE = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1777049676/user_profile_images/hinzyxciaqg7tnlcmwtg.jpg";
+
 const EventDetails = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
@@ -174,15 +176,14 @@ const EventDetails = () => {
               </div>
             </Col>
             <Col lg={6} data-aos="fade-down" data-aos-duration="1000" data-aos-once="false">
-              {event.coverImage && (
-                <div className="hero-image-container">
-                  <img
-                    src={`${event.coverImage}`}
-                    alt="event cover"
-                    className="hero-image img-fluid rounded shadow"
-                  />
-                </div>
-              )}
+              <div className="hero-image-container">
+                <img
+                  src={event.coverImage || DEFAULT_EVENT_IMAGE}
+                  alt="event cover"
+                  className="hero-image img-fluid rounded shadow"
+                  onError={(e) => { e.target.onerror = null; e.target.src = DEFAULT_EVENT_IMAGE; }}
+                />
+              </div>
             </Col>
           </Row>
         </Container>

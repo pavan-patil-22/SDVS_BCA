@@ -6,6 +6,7 @@ import Gallery from "./Gallery";
 import EventNews from "./EventNews";
 import NotificationBar from "./NotificationBar";
 import { useNavigate } from "react-router-dom";
+// import Toppers from "./Toppers";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,22 +27,19 @@ const Home = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate("/contact"); 
+    navigate("/contact");
     setTimeout(() => {
-      window.scrollTo({ top: 700, behavior: "smooth" }); 
+      window.scrollTo({ top: 700, behavior: "smooth" });
     }, 500);
   };
-
-
-  
 
   // SLIDE DATA WITH IMAGES AND CORRESPONDING TEXT
   const slides = [
@@ -50,8 +48,7 @@ const Home = () => {
       text: "Epitome Of Excellence .",
     },
     {
-      image:
-        "campus.jpg",
+      image: "campus.jpg",
       text: "Transforming Education.",
     },
     {
@@ -140,30 +137,35 @@ const Home = () => {
   // Campus section content
   const campusContent = {
     Campus: {
-        title: "Campus",
-      description: "Our clean and eco-conscious campus creates the perfect atmosphere for focused learning and overall well-being",
-      image: "campus image.png"
+      title: "Campus",
+      description:
+        "Our clean and eco-conscious campus creates the perfect atmosphere for focused learning and overall well-being",
+      image: "campus image.png",
     },
     "Computer Lab": {
       title: "Computer Lab",
-      description: "Our advanced and high-tech computer lab provides the essential tools for innovation, practical learning, and digital mastery.",
-      image: "computer lab.jpg"
+      description:
+        "Our advanced and high-tech computer lab provides the essential tools for innovation, practical learning, and digital mastery.",
+      image: "computer lab.jpg",
     },
-    "Library": {
+    Library: {
       title: "Library",
-      description: "Our sustainable and thoughtfully designed library supports deep learning and well-being in a calm, inspiring environment.",
-      image: 'Library3.JPG'
+      description:
+        "Our sustainable and thoughtfully designed library supports deep learning and well-being in a calm, inspiring environment.",
+      image: "Library3.JPG",
     },
     "Sports & Grounds": {
       title: "Sports & Grounds",
-      description: "Our dynamic sports facilities are designed to develop physical strength, character, and a sense of collective achievement.",
-      image: "ground.jpeg"
+      description:
+        "Our dynamic sports facilities are designed to develop physical strength, character, and a sense of collective achievement.",
+      image: "ground.jpeg",
     },
     "SDVS'S BCA": {
       title: "SDVS'S BCA",
-      description: "A dynamic and innovative academic program designed to shape future tech leaders, offering a perfect blend of theoretical knowledge and practical expertise in a supportive and inspiring environment.",
-      image: "collage.jpg"
-    }
+      description:
+        "A dynamic and innovative academic program designed to shape future tech leaders, offering a perfect blend of theoretical knowledge and practical expertise in a supportive and inspiring environment.",
+      image: "collage.jpg",
+    },
   };
 
   const tabs = Object.keys(campusContent);
@@ -180,9 +182,7 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  const handleEnquireClick = () => {
-    
-  };
+  const handleEnquireClick = () => {};
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -196,7 +196,7 @@ const Home = () => {
     <>
       {/* Banner Section */}
       <section className="banner">
-        <NotificationBar/>
+        <NotificationBar />
         <style>{`
           body {
             margin: 0;
@@ -528,7 +528,7 @@ const Home = () => {
                   onMouseEnter={() => setActiveCard(index)}
                   onMouseLeave={() => setActiveCard(null)}
                   data-aos="fade-left"
-                  data-aos-delay='100'
+                  data-aos-delay="100"
                 >
                   <h3
                     style={{
@@ -615,10 +615,10 @@ const Home = () => {
               {admissionItems.map((item, index) => (
                 <div
                   key={index}
-                  style={{ 
-                    margin: "8px 0", 
+                  style={{
+                    margin: "8px 0",
                     cursor: "pointer",
-                    fontSize: isMobile ? "14px" : "16px"
+                    fontSize: isMobile ? "14px" : "16px",
                   }}
                   onClick={handleClick}
                 >
@@ -648,21 +648,23 @@ const Home = () => {
         data-aos="fade-up"
       >
         <div style={{ textAlign: isMobile ? "center" : "left" }}>
-          <h3 style={{ margin: 0, fontSize: isMobile ? "18px" : "24px" }}>Accreditations and Affiliations</h3>
+          <h3 style={{ margin: 0, fontSize: isMobile ? "18px" : "24px" }}>
+            Accreditations and Affiliations
+          </h3>
         </div>
-        <div style={{ 
-          display: "flex", 
-          gap: isMobile ? "20px" : "40px", 
-          flexWrap: "wrap",
-          justifyContent: isMobile ? "center" : "flex-end"
-        }}>
-          
+        <div
+          style={{
+            display: "flex",
+            gap: isMobile ? "20px" : "40px",
+            flexWrap: "wrap",
+            justifyContent: isMobile ? "center" : "flex-end",
+          }}
+        >
           <img
             src="https://tse2.mm.bing.net/th/id/OIP.zULu3PJC9TnpyU7vv5LKIAHaFf?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
             alt="NAAC"
             style={{ height: isMobile ? "60px" : "80px", objectFit: "contain" }}
           />
-          
         </div>
       </div>
 
@@ -727,16 +729,19 @@ const Home = () => {
           </span>
         </div>
       </div>
-
+      {/* Toppers Section */}
+      {/* <div>
+        <Toppers />
+      </div> */}
       {/* Placements Section */}
       <div>
         <Placement />
       </div>
-      
+
       <div>
         <EventNews />
       </div>
-      
+
       {/* Campus Life Section */}
       <div
         style={{
@@ -760,7 +765,11 @@ const Home = () => {
           }}
         >
           <div
-            style={{ width: "100%", maxWidth: isMobile ? "100%" : "600px", minWidth: "300px" }}
+            style={{
+              width: "100%",
+              maxWidth: isMobile ? "100%" : "600px",
+              minWidth: "300px",
+            }}
             data-aos="fade-down"
           >
             <h2
@@ -791,11 +800,13 @@ const Home = () => {
             >
               {campusContent[activeTab].title}
             </h3>
-            <p style={{ 
-              fontSize: isMobile ? "14px" : "15px", 
-              lineHeight: "1.6", 
-              color: "#444" 
-            }}>
+            <p
+              style={{
+                fontSize: isMobile ? "14px" : "15px",
+                lineHeight: "1.6",
+                color: "#444",
+              }}
+            >
               {campusContent[activeTab].description}
             </p>
             <a
@@ -820,13 +831,13 @@ const Home = () => {
 
             {/* Bottom Tab Buttons */}
             <div
-              style={{ 
-                display: "flex", 
-                marginTop: "20px", 
-                flexWrap: "wrap", 
+              style={{
+                display: "flex",
+                marginTop: "20px",
+                flexWrap: "wrap",
                 gap: "5px",
                 overflowX: isMobile ? "auto" : "visible",
-                paddingBottom: isMobile ? "10px" : "0"
+                paddingBottom: isMobile ? "10px" : "0",
               }}
             >
               {tabs.map((tab) => (
@@ -853,11 +864,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div style={{ 
-            width: "100%", 
-            maxWidth: isMobile ? "100%" : "500px", 
-            minWidth: "300px" 
-          }} data-aos="fade-up">
+          <div
+            style={{
+              width: "100%",
+              maxWidth: isMobile ? "100%" : "500px",
+              minWidth: "300px",
+            }}
+            data-aos="fade-up"
+          >
             <img
               src={campusContent[activeTab].image}
               alt="Campus Life"

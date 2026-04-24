@@ -6,6 +6,8 @@ import 'aos/dist/aos.css';
 import { FaGraduationCap, FaBriefcase, FaChalkboardTeacher, FaClock, FaUserTie, FaUserFriends } from "react-icons/fa";
 import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 
+const DEFAULT_PROFILE_IMAGE = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1777048403/user_profile_images/gukheby9nktqooefmsbu.png";
+
 const Faculty = () => {
   const [teachingStaff, setTeachingStaff] = useState([]);
   const [nonTeachingStaff, setNonTeachingStaff] = useState([]);
@@ -28,7 +30,6 @@ const Faculty = () => {
       try {
         const res = await axios.get(`${BASE_API_URL}/faculty`);
         
-        // Separate teaching and non-teaching staff
         const { teaching, nonTeaching } = separateAndSortStaff(res.data);
         setTeachingStaff(teaching);
         setNonTeachingStaff(nonTeaching);
@@ -41,9 +42,7 @@ const Faculty = () => {
     fetchFaculty();
   }, []);
 
-  // Function to separate teaching and non-teaching staff and sort them
   const separateAndSortStaff = (facultyList) => {
-    // Separate teaching and non-teaching
     const teaching = [];
     const nonTeaching = [];
 
@@ -51,7 +50,6 @@ const Faculty = () => {
       const roleLower = staff.role?.toLowerCase() || '';
       const teachingTypeLower = staff.teachingType?.toLowerCase() || '';
       
-      // Check if it's teaching staff
       const isTeaching = teachingTypeLower === 'teaching' || 
                         roleLower.includes('teacher') || 
                         roleLower.includes('faculty') || 
@@ -67,16 +65,12 @@ const Faculty = () => {
       }
     });
 
-    // Sort teaching staff
     const sortedTeaching = sortTeachingStaff(teaching);
-    
-    // Sort non-teaching staff (peon at the end)
     const sortedNonTeaching = sortNonTeachingStaff(nonTeaching);
 
     return { teaching: sortedTeaching, nonTeaching: sortedNonTeaching };
   };
 
-  // Function to sort teaching staff
   const sortTeachingStaff = (staffList) => {
     const rolePriority = {
       'principal': 1,
@@ -91,11 +85,9 @@ const Faculty = () => {
     };
     
     return staffList.sort((a, b) => {
-      // Get role in lowercase for comparison
       const roleA = (a.role || '').toLowerCase();
       const roleB = (b.role || '').toLowerCase();
       
-      // Compare by role priority first
       const priorityA = rolePriority[roleA] || 9;
       const priorityB = rolePriority[roleB] || 9;
       
@@ -103,7 +95,6 @@ const Faculty = () => {
         return priorityA - priorityB;
       }
       
-      // If same role, show full-time first
       const empTypeA = (a.employmentType || '').toLowerCase();
       const empTypeB = (b.employmentType || '').toLowerCase();
       
@@ -114,7 +105,6 @@ const Faculty = () => {
         return 1;
       }
       
-      // If same employment type, sort by experience (higher first)
       const expA = parseInt(a.experience) || 0;
       const expB = parseInt(b.experience) || 0;
       
@@ -122,7 +112,6 @@ const Faculty = () => {
     });
   };
 
-  // Function to sort non-teaching staff (peon at the end)
   const sortNonTeachingStaff = (staffList) => {
     const rolePriority = {
       'director': 1,
@@ -136,25 +125,21 @@ const Faculty = () => {
       'lab assistant': 9,
       'lab technician': 10,
       'security': 11,
-      'peon': 12,  // Peon at the end
+      'peon': 12,
       'cleaner': 13,
       'sweeper': 14
     };
     
     return staffList.sort((a, b) => {
-      // Get role in lowercase for comparison
       const roleA = (a.role || '').toLowerCase();
       const roleB = (b.role || '').toLowerCase();
       
-      // Check for peon specifically
       const isPeonA = roleA.includes('peon') || roleA.includes('messenger');
       const isPeonB = roleB.includes('peon') || roleB.includes('messenger');
       
-      // Move peon to the end
       if (isPeonA && !isPeonB) return 1;
       if (!isPeonA && isPeonB) return -1;
       
-      // Compare by role priority
       const priorityA = rolePriority[roleA] || 15;
       const priorityB = rolePriority[roleB] || 15;
       
@@ -162,7 +147,6 @@ const Faculty = () => {
         return priorityA - priorityB;
       }
       
-      // If same role, show full-time first
       const empTypeA = (a.employmentType || '').toLowerCase();
       const empTypeB = (b.employmentType || '').toLowerCase();
       
@@ -173,7 +157,6 @@ const Faculty = () => {
         return 1;
       }
       
-      // If same employment type, sort by experience (higher first)
       const expA = parseInt(a.experience) || 0;
       const expB = parseInt(b.experience) || 0;
       
@@ -181,32 +164,30 @@ const Faculty = () => {
     });
   };
 
-  // Function to format experience display
   const formatExperience = (exp) => {
     const experience = parseInt(exp) || 0;
     return experience === 0 ? "Fresher" : `${experience} years`;
   };
 
-  // Function to get role badge color
   const getRoleColor = (role) => {
     const roleLower = role?.toLowerCase() || '';
     
     if (roleLower.includes('principal') || roleLower.includes('director')) {
-      return '#dc3545'; // Red for principal/director
+      return '#dc3545';
     } else if (roleLower.includes('hod') || roleLower.includes('head')) {
-      return '#0d6efd'; // Blue for HOD/Head
+      return '#0d6efd';
     } else if (roleLower.includes('professor')) {
-      return '#198754'; // Green for professors
+      return '#198754';
     } else if (roleLower.includes('teacher') || roleLower.includes('lecturer')) {
-      return '#6f42c1'; // Purple for teachers/lecturers
+      return '#6f42c1';
     } else if (roleLower.includes('clerk') || roleLower.includes('accountant')) {
-      return '#fd7e14'; // Orange for office staff
+      return '#fd7e14';
     } else if (roleLower.includes('lab')) {
-      return '#20c997'; // Teal for lab staff
+      return '#20c997';
     } else if (roleLower.includes('librarian')) {
-      return '#0dcaf0'; // Cyan for librarian
+      return '#0dcaf0';
     } else {
-      return '#6c757d'; // Gray for others
+      return '#6c757d';
     }
   };
 
@@ -283,11 +264,11 @@ const Faculty = () => {
         }
         
         .section-container {
-          background: white;
+          // background: white;
           border-radius: 12px;
           padding: 30px;
           margin-bottom: 40px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .staff-count-badge {
@@ -469,6 +450,64 @@ const Faculty = () => {
           font-size: 16px;
         }
         
+        /* Desktop styles */
+        @media (min-width: 992px) {
+          .faculty-image-container {
+            height: 400px;
+          }
+          
+          .employment-badge {
+            display: block;
+          }
+        }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 991px) {
+          .faculty-image-container {
+            height: 320px;
+          }
+          
+          /* Hide employment badge on mobile */
+          .employment-badge {
+            display: none;
+          }
+          
+          /* Remove additional details on mobile */
+          .faculty-education,
+          .detail-item {
+            display: none;
+          }
+          
+          /* Show only name and role on mobile */
+          .faculty-details {
+            text-align: center;
+            padding: 15px;
+          }
+          
+          .faculty-name {
+            font-size: 16px;
+            margin-bottom: 8px;
+          }
+          
+          /* Ensure 3 cards per row on mobile */
+          .row > [class*='col-'] {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+          
+          .faculty-card {
+            margin-bottom: 16px;
+          }
+          
+          .role-badge {
+            font-size: 10px;
+            padding: 3px 10px;
+            top: 10px;
+            left: 10px;
+          }
+        }
+        
+        /* Very small screens */
         @media (max-width: 768px) {
           .faculty-hero-section {
             padding: 60px 15px;
@@ -490,15 +529,25 @@ const Faculty = () => {
             font-size: 24px;
           }
           
-          .faculty-image-container {
-            height: 400px;
-          }
-          
           .section-container {
             padding: 20px;
           }
+          
+          .faculty-image-container {
+            height: 280px;
+          }
+          
+          .faculty-name {
+            font-size: 15px;
+          }
+          
+          .role-badge {
+            font-size: 9px;
+            padding: 3px 8px;
+          }
         }
         
+        /* Extra small devices */
         @media (max-width: 576px) {
           .faculty-hero-section h1 {
             font-size: 28px;
@@ -519,10 +568,22 @@ const Faculty = () => {
             margin-left: 0;
             margin-top: 5px;
           }
+          
+          .faculty-image-container {
+            height: 250px;
+          }
+          
+          .faculty-name {
+            font-size: 14px;
+          }
+          
+          .role-badge {
+            font-size: 8px;
+            padding: 2px 6px;
+          }
         }
       `}</style>
 
-      {/* Hero Section */}
       <div className="faculty-hero-section text-center py-5">
         <Container>
           <div className="hero-content" data-aos="fade-down">
@@ -559,40 +620,8 @@ const Faculty = () => {
               <div className="d-flex align-items-center justify-content-between mb-4">
                 <h3 className="sub-section-title">
                   <FaChalkboardTeacher /> Teaching Faculty
-                  {/* <span className="staff-count-badge">{teachingStaff.length} Members</span> */}
                 </h3>
               </div>
-              
-              {/* Teaching Staff Summary Stats */}
-              {/* {teachingStaff.length > 0 && (
-                <div className="summary-stats" data-aos="fade-up">
-                  <h5 className="mb-3" style={{ color: '#1f3b88' }}>Teaching Faculty Overview</h5>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="stat-item">
-                        <span className="stat-label">Total Faculty</span>
-                        <span className="stat-value">{teachingStaff.length}</span>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="stat-item">
-                        <span className="stat-label">Full-time Staff</span>
-                        <span className="stat-value">
-                          {teachingStaff.filter(s => (s.employmentType || '').toLowerCase().includes('full')).length}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-md-4">
-                      <div className="stat-item">
-                        <span className="stat-label">10+ Years Experience</span>
-                        <span className="stat-value">
-                          {teachingStaff.filter(s => (s.experience || 0) >= 10).length}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )} */}
               
               {teachingStaff.length === 0 ? (
                 <div className="empty-state" data-aos="fade-up">
@@ -603,7 +632,7 @@ const Faculty = () => {
               ) : (
                 <Row>
                   {teachingStaff.map((staff, index) => (
-                    <Col lg={4} md={6} key={staff._id} className="mb-4">
+                    <Col lg={4} md={6} sm={6} xs={6} key={staff._id} className="mb-4">
                       <Card 
                         className="faculty-card" 
                         data-aos="fade-up" 
@@ -612,13 +641,16 @@ const Faculty = () => {
                         <div className="faculty-image-container">
                           {staff.picture ? (
                             <img
-                              src={`${Img_BASE_URL}${staff.picture}`}
+                              src={`${staff.picture}`}
                               alt={staff.name}
+                              onError={(e) => { e.target.src = DEFAULT_PROFILE_IMAGE; }}
                             />
                           ) : (
-                            <div className="faculty-image-placeholder">
-                              <FaChalkboardTeacher />
-                            </div>
+                            <img
+                              src={DEFAULT_PROFILE_IMAGE}
+                              alt={staff.name}
+                              onError={(e) => { e.target.src = DEFAULT_PROFILE_IMAGE; }}
+                            />
                           )}
                           <div 
                             className="role-badge" 
@@ -643,26 +675,6 @@ const Faculty = () => {
                               <div className="detail-value">{formatExperience(staff.experience)}</div>
                             </div>
                           </div>
-                          
-                          {/* <div className="detail-item">
-                            <span className="detail-icon">
-                              <FaUserTie />
-                            </span>
-                            <div className="detail-content">
-                              <div className="detail-label">Department</div>
-                              <div className="detail-value">{staff.department || 'BCA Department'}</div>
-                            </div>
-                          </div>
-                           */}
-                          {/* <div className="detail-item">
-                            <span className="detail-icon">
-                              <FaClock />
-                            </span>
-                            <div className="detail-content">
-                              <div className="detail-label">Teaching Type</div>
-                              <div className="detail-value">{staff.teachingType || 'Teaching'}</div>
-                            </div>
-                          </div> */}
                         </div>
                       </Card>
                     </Col>
@@ -676,54 +688,8 @@ const Faculty = () => {
               <div className="d-flex align-items-center justify-content-between mb-4">
                 <h3 className="sub-section-title">
                   <FaUserFriends /> Non-Teaching Staff
-                  {/* <span className="staff-count-badge">{nonTeachingStaff.length} Members</span> */}
                 </h3>
               </div>
-              
-              {/* Non-Teaching Staff Summary Stats */}
-              {/* {nonTeachingStaff.length > 0 && (
-                <div className="summary-stats" data-aos="fade-up">
-                  <h5 className="mb-3" style={{ color: '#1f3b88' }}>Administrative Staff Overview</h5>
-                  <div className="row">
-                    <div className="col-md-3">
-                      <div className="stat-item">
-                        <span className="stat-label">Total Staff</span>
-                        <span className="stat-value">{nonTeachingStaff.length}</span>
-                      </div>
-                    </div>
-                    <div className="col-md-3">
-                      <div className="stat-item">
-                        <span className="stat-label">Full-time</span>
-                        <span className="stat-value">
-                          {nonTeachingStaff.filter(s => (s.employmentType || '').toLowerCase().includes('full')).length}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-md-3">
-                      <div className="stat-item">
-                        <span className="stat-label">Admin Staff</span>
-                        <span className="stat-value">
-                          {nonTeachingStaff.filter(s => !((s.role || '').toLowerCase().includes('peon') || 
-                            (s.role || '').toLowerCase().includes('messenger') || 
-                            (s.role || '').toLowerCase().includes('cleaner') || 
-                            (s.role || '').toLowerCase().includes('sweeper'))).length}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-md-3">
-                      <div className="stat-item">
-                        <span className="stat-label">Support Staff</span>
-                        <span className="stat-value">
-                          {nonTeachingStaff.filter(s => ((s.role || '').toLowerCase().includes('peon') || 
-                            (s.role || '').toLowerCase().includes('messenger') || 
-                            (s.role || '').toLowerCase().includes('cleaner') || 
-                            (s.role || '').toLowerCase().includes('sweeper'))).length}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )} */}
               
               {nonTeachingStaff.length === 0 ? (
                 <div className="empty-state" data-aos="fade-up">
@@ -734,7 +700,7 @@ const Faculty = () => {
               ) : (
                 <Row>
                   {nonTeachingStaff.map((staff, index) => (
-                    <Col lg={4} md={6} key={staff._id} className="mb-4">
+                    <Col lg={4} md={6} sm={6} xs={6} key={staff._id} className="mb-4">
                       <Card 
                         className="faculty-card" 
                         data-aos="fade-up" 
@@ -743,13 +709,16 @@ const Faculty = () => {
                         <div className="faculty-image-container">
                           {staff.picture ? (
                             <img
-                              src={`${Img_BASE_URL}${staff.picture}`}
+                              src={`${staff.picture}`}
                               alt={staff.name}
+                              onError={(e) => { e.target.src = DEFAULT_PROFILE_IMAGE; }}
                             />
                           ) : (
-                            <div className="faculty-image-placeholder">
-                              <FaUserFriends />
-                            </div>
+                            <img
+                              src={DEFAULT_PROFILE_IMAGE}
+                              alt={staff.name}
+                              onError={(e) => { e.target.src = DEFAULT_PROFILE_IMAGE; }}
+                            />
                           )}
                           <div 
                             className="role-badge" 
@@ -763,37 +732,6 @@ const Faculty = () => {
                         </div>
                         <div className="faculty-details">
                           <h3 className="faculty-name">{staff.name}</h3>
-                          {/* <div className="faculty-education">{staff.education || 'Not specified'}</div>
-                          
-                          <div className="detail-item">
-                            <span className="detail-icon">
-                              <FaBriefcase />
-                            </span>
-                            <div className="detail-content">
-                              <div className="detail-label">Experience</div>
-                              <div className="detail-value">{formatExperience(staff.experience)}</div>
-                            </div>
-                          </div>
-                          
-                          <div className="detail-item">
-                            <span className="detail-icon">
-                              <FaGraduationCap />
-                            </span>
-                            <div className="detail-content">
-                              <div className="detail-label">Qualification</div>
-                              <div className="detail-value">{staff.qualification || 'Not specified'}</div>
-                            </div>
-                          </div>
-                          
-                          <div className="detail-item">
-                            <span className="detail-icon">
-                              <FaUserTie />
-                            </span>
-                            <div className="detail-content">
-                              <div className="detail-label">Department</div>
-                              <div className="detail-value">{staff.department || 'Administration'}</div>
-                            </div>
-                          </div> */}
                         </div>
                       </Card>
                     </Col>

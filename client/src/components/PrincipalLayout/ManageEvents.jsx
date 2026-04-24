@@ -233,7 +233,7 @@ const ManageEvents = () => {
                   {event.coverImage && (
                     <Card.Img
                       variant="top"
-                      src={`${Img_BASE_URL}${event.coverImage}`}
+                      src={`${event.coverImage}`}
                       className="event-image"
                     />
                   )}
@@ -305,7 +305,7 @@ const ManageEvents = () => {
                           {event.eventImages.slice(0, 3).map((img, idx) => (
                             <img
                               key={idx}
-                              src={`${Img_BASE_URL}${img}`}
+                              src={`${img}`}
                               alt="event"
                               className="gallery-thumbnail"
                             />

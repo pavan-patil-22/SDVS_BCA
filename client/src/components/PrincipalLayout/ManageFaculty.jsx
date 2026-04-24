@@ -139,7 +139,7 @@ const ManageFaculty = () => {
       teachingType: faculty.teachingType || "",
       facultyPicture: null,
     });
-    setPreviewImage(faculty.picture ? `${Img_BASE_URL}${faculty.picture}` : null);
+    setPreviewImage(faculty.picture ? `${faculty.picture}` : null);
     setShowModal(true);
   };
 
@@ -223,7 +223,7 @@ const ManageFaculty = () => {
                     {f.picture ? (
                       <Card.Img
                         variant="top"
-                        src={`${Img_BASE_URL}${f.picture}`}
+                        src={`${f.picture}`}
                         className="faculty-image"
                       />
                     ) : (

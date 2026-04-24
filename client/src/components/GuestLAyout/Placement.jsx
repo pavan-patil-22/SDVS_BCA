@@ -7,7 +7,7 @@ import { FaBuilding, FaHandshake, FaMoneyBillWave } from "react-icons/fa";
 import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 
 const API_URL = `${BASE_API_URL}/placements`;
-const IMG_URL = `${Img_BASE_URL}`;
+const IMG_URL = ``;
 const FALLBACK_IMAGE = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1770733938/user_profile_images/xkg5nwjhsura49msluym.jpg";
 
 const COMPANY_LOGOS = [
@@ -15,7 +15,7 @@ const COMPANY_LOGOS = [
   "https://indiancompanies.in/wp-content/uploads/2020/05/TCS-Logo-Tata-consultancy-service-1920x1144.png",
   "https://logowik.com/content/uploads/images/cognizant-new-20223302.jpg",
   "https://pngimg.com/uploads/ibm/ibm_PNG19658.png",
-  "https://logos-world.net/wp-content/uploads/2020/11/HP-Logo.png",
+  "https://wallpaperaccess.com/full/6578146.png",
 ];
 
 const Placement = () => {

@@ -20,7 +20,7 @@ import 'aos/dist/aos.css';
 import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 
 const API_URL = `${BASE_API_URL}/placements`;
-const IMG_URL = `${Img_BASE_URL}`;
+const IMG_URL = ``;
 
 const ManagePlacement = () => {
   const [placements, setPlacements] = useState([]);

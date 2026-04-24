@@ -6,7 +6,7 @@ import { FaBuilding, FaMoneyBillWave } from "react-icons/fa";
 import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 
 const API_URL = `${BASE_API_URL}/placements`;
-const IMG_URL = `${Img_BASE_URL}`;
+const IMG_URL = ``;
 const FALLBACK_IMAGE = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1770733938/user_profile_images/xkg5nwjhsura49msluym.jpg";
 
 const GuestPlacementView = () => {

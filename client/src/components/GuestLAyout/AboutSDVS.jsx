@@ -196,6 +196,10 @@ const AboutSDVS = () => {
           line-height: 1.8;
           color: #333;
           margin-bottom: 20px;
+          text-align: justify;
+          text-align-last: left;
+          word-spacing: 0.1em;
+          letter-spacing: 0.01em;
         }
         
         .about-image-container {

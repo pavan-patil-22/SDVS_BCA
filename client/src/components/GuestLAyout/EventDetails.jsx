@@ -97,7 +97,7 @@ const EventDetails = () => {
               &times;
             </button>
             <img
-              src={`${Img_BASE_URL}${expandedImage.img}`}
+              src={`${expandedImage.img}`}
               alt={`Event image ${expandedImage.index + 1}`}
               className="expanded-image"
             />
@@ -177,7 +177,7 @@ const EventDetails = () => {
               {event.coverImage && (
                 <div className="hero-image-container">
                   <img
-                    src={`${Img_BASE_URL}${event.coverImage}`}
+                    src={`${event.coverImage}`}
                     alt="event cover"
                     className="hero-image img-fluid rounded shadow"
                   />
@@ -231,7 +231,7 @@ const EventDetails = () => {
                         >
                           <img
                             className="d-block w-100 carousel-image"
-                            src={`${Img_BASE_URL}${img}`}
+                            src={`${img}`}
                             alt={`Event image ${idx + 1}`}
                           />
                           <div className="carousel-image-overlay">
@@ -252,7 +252,7 @@ const EventDetails = () => {
                         onClick={() => setActiveIndex(idx)}
                       >
                         <img
-                          src={`${Img_BASE_URL}${img}`}
+                          src={`${img}`}
                           alt={`Thumbnail ${idx + 1}`}
                           className="thumbnail"
                         />
@@ -457,6 +457,10 @@ const EventDetails = () => {
           .description-para {
             margin-bottom: 20px;
             color: #495057;
+            text-align: justify;
+            text-align-last: left;
+            word-spacing: 0.1em;
+            letter-spacing: 0.01em;
           }
           
           .event-carousel {

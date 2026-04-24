@@ -23,7 +23,7 @@ import Contact from "./components/GuestLAyout/Contact";
 import ManageGallery from "./components/PrincipalLayout/ManageGallery";
 import ManagePlacement from "./components/PrincipalLayout/ManagePlacement";
 import ManageEventNews from "./components/PrincipalLayout/ManageEventNews";
-import GuestPlacementView from "./components/GuestLAyout/GuestPlacementView ";
+// import GuestPlacementView from "./components/GuestLAyout/GuestPlacementView ";
 import Chatbot from "./components/GuestLAyout/Chatbot";
 import GuestMessage from "./components/PrincipalLayout/GuestMessage";
 import ManageNotification from "./components/PrincipalLayout/ManageNotification";
@@ -32,6 +32,9 @@ import PrincipalDashboard from "./components/PrincipalLayout/PrincipalDashboard"
 import ChangePassword from "./components/PrincipalLayout/ChangePassword";
 import ProtectedRoute from "./components/Routes/ProtectedRoute";
 import AboutCollege from "./components/GuestLAyout/AboutCollege";
+import ManageToppers from "./components/PrincipalLayout/ManageToppers";
+import Toppers from "./components/GuestLAyout/Toppers";
+import GuestPlacementView from "./components/GuestLAyout/GuestPlacementView";
 
 function App() {
   // useEffect(() => {
@@ -80,6 +83,7 @@ function App() {
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/placements" element={<GuestPlacementView />} />
           <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/toppers" element={<Toppers />} />
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/principal" element={<PrincipalLayout />}>
@@ -93,6 +97,7 @@ function App() {
             <Route path="guest-messages" element={<GuestMessage />} />
             <Route path="manage-notifications"element={<ManageNotification />}/>
             <Route path="change-password" element={<ChangePassword />} />
+            <Route path="manage-toppers" element={<ManageToppers/>}/>
           </Route>
         </Route>
 

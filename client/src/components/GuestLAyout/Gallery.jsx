@@ -311,7 +311,7 @@ const Gallery = () => {
                     <div className="gallery-video-wrapper">
                       <video
                         className="gallery-media"
-                        src={`${Img_BASE_URL}${gallery.image}`}
+                        src={`${gallery.image}`}
                         muted
                       />
                       <div className="gallery-video-overlay">
@@ -321,7 +321,7 @@ const Gallery = () => {
                   ) : (
                     <div className="gallery-image-wrapper">
                       <img
-                        src={`${Img_BASE_URL}${gallery.image}`}
+                        src={`${gallery.image}`}
                         alt={gallery.title}
                         className="gallery-media"
                       />
@@ -390,13 +390,13 @@ const Gallery = () => {
                     style={{ objectFit: "contain" }}
                   >
                     <source
-                      src={`${Img_BASE_URL}${selectedMedia.image}`}
+                      src={`${selectedMedia.image}`}
                       type="video/mp4"
                     />
                   </video>
                 ) : (
                   <img
-                    src={`${Img_BASE_URL}${selectedMedia.image}`}
+                    src={`${selectedMedia.image}`}
                     alt={selectedMedia.title}
                     className="w-100 h-100"
                     style={{ objectFit: "contain" }}

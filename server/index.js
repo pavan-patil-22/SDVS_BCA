@@ -13,6 +13,7 @@ import placementRouter from "./routes/placementRoutes.js";
 import eventNewsRouter from "./routes/eventNewsRoutes.js";
 import contactMessageRouter from "./routes/contactRoutes.js";
 import notificationRrouter from "./routes/notificationRoutes.js";
+import TopperRouter from "./routes/TopperRouter.js";
 
 const app = express();
 app.use(cors({
@@ -38,8 +39,19 @@ app.use("/api/placements",placementRouter);
 app.use("/api/events-news",eventNewsRouter);
 app.use("/api/contact-message", contactMessageRouter);
 app.use("/api/notifications", notificationRrouter);
+// app.use("/api/topper",TopperRouter)
+
+//Reder Active API
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
+});
+
+// Global error handler for multer and other errors
+app.use((err, req, res, next) => {
+  console.error("Express error:", err);
+  if (!res.headersSent) {
+    res.status(500).json({ error: err.message || "Server error" });
+  }
 });
 
 

@@ -109,14 +109,21 @@ const API_CONFIG = [
   { 
     name: "Events", 
     endpoint: `${BASE_API_URL}/events`, 
-    route: "/Principal/faculty", 
+    route: "/Principal/events", 
+    icon: <FaCalendarAlt size={24} />,
+    color: "#df158e"
+  },
+   { 
+    name: "Facility", 
+    endpoint: `${BASE_API_URL}/facilities`, 
+    route: "/Principal/facility", 
     icon: <FaCalendarAlt size={24} />,
     color: "#4caf50"
   },
   { 
     name: "Faculty", 
     endpoint: `${BASE_API_URL}/faculty`, 
-    route: "/Principal/facility", 
+    route: "/Principal/faculty", 
     icon: <FaChalkboardTeacher size={24} />,
     color: "#2196f3"
   },
@@ -146,7 +153,7 @@ const API_CONFIG = [
     endpoint: `${BASE_API_URL}/contact-message`, 
     route: "/Principal/guest-messages", 
     icon: <FaEnvelope size={24} />,
-    color: "#607d8b"
+    color: "#f5a208"
   },
   { 
     name: "Quick Notification", 

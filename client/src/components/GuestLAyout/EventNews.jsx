@@ -347,7 +347,7 @@ const EventNews = () => {
                   {ev.image && (
                     <Card.Img 
                       variant="top" 
-                      src={`${Img_BASE_URL}${ev.image}`} 
+                      src={`${ev.image}`} 
                       alt={ev.title}
                       className="event-image"
                     />

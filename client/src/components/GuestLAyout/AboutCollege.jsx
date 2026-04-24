@@ -176,6 +176,10 @@ const AboutCollege = () => {
           line-height: 1.8;
           color: #444;
           margin-bottom: 20px;
+          text-align: justify;
+          text-align-last: left;
+          word-spacing: 0.1em;
+          letter-spacing: 0.01em;
         }
         
         .highlight-box {

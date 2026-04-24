@@ -185,12 +185,12 @@ const ManageGallery = () => {
                         controls
                         className="gallery-image"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        src={`${Img_BASE_URL}${gallery.image}`}
+                        src={`${gallery.image}`}
                       />
                     ) : (
                       <Card.Img
                         variant="top"
-                        src={`${Img_BASE_URL}${gallery.image}`}
+                        src={`${gallery.image}`}
                         className="gallery-image"
                       />
                     )}
@@ -270,9 +270,9 @@ const ManageGallery = () => {
                         <img src={previewMedia} alt="Preview" className="preview-img" />
                       )
                     ) : editingGallery?.image && (editingGallery.type === 'video' || editingGallery.image.match(/\.(mp4|webm|ogg)$/i)) ? (
-                      <video src={`${Img_BASE_URL}${editingGallery.image}`} controls className="preview-img" style={{ maxHeight: 200 }} />
+                      <video src={`${editingGallery.image}`} controls className="preview-img" style={{ maxHeight: 200 }} />
                     ) : (
-                      <img src={`${Img_BASE_URL}${editingGallery.image}`} alt="Preview" className="preview-img" />
+                      <img src={`${editingGallery.image}`} alt="Preview" className="preview-img" />
                     )}
                   </div>
                 )}

@@ -118,7 +118,7 @@ const Facility = () => {
                     {f.image && (
                       <div className="facility-image-container">
                         <img
-                          src={`${Img_BASE_URL}${f.image}`}
+                          src={`${f.image}`}
                           alt={f.title}
                           className="facility-image"
                           onError={(e) => {

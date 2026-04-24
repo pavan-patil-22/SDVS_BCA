@@ -279,7 +279,7 @@ const ManageFacility = () => {
                       {f.image && (
                         <Card.Img
                           variant="top"
-                          src={`${Img_BASE_URL}${f.image}`}
+                          src={`${f.image}`}
                           className="facility-image"
                         />
                       )}
@@ -362,7 +362,7 @@ const ManageFacility = () => {
                   <div className="current-image mt-2">
                     <p className="small text-muted">Current Image:</p>
                     <img 
-                      src={`${Img_BASE_URL}${editFacility.image}`} 
+                      src={`${editFacility.image}`} 
                       alt="Current" 
                       className="img-thumbnail" 
                     />

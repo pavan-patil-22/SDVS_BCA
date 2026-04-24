@@ -58,7 +58,7 @@
 //                   <div className="card-image-container">
 //                     <Card.Img
 //                       variant="top"
-//                       src={`${Img_BASE_URL}${event.coverImage}`}
+//                       src={`${event.coverImage}`}
 //                       className="event-card-img"
 //                     />
 //                     <div className="card-overlay"></div>
@@ -426,7 +426,7 @@ const Events = () => {
                   <div className="card-image-container">
                     <Card.Img
                       variant="top"
-                      src={`${Img_BASE_URL}${event.coverImage}`}
+                      src={`${event.coverImage}`}
                       className="event-card-img"
                     />
                     <div className="card-overlay"></div>

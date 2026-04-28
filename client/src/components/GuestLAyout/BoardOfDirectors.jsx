@@ -3,16 +3,16 @@ import React from "react";
 const BoardOfDirectors = () => {
   
   const boardMembersSet2 = [
-    { name: "Shri. A.B. Patil", position: "President", image: "A_B_Patil.PNG" },
+    { name: "Shri. A.B. Patil", position: "President", image: "A_B_Patil.png" },
     { name: "Shri. K.C. Shirakoli", position: "Vice-President", image: "K_C_Shirakoli.png" },
     { name: "Shri.R.B. Patil", position: "Member", image: "R_B_Patil.png" },
     { name: "Shri.V.A. Patil", position: "Member", image: "v_a_patil.png" },
     { name: "Shri. V.B. Todakar", position: "Member", image: "v_b_Todakar .png" },
     { name: "Dr.N.P. Haval", position: "Member", image: "N_P_Haval.png" },
     { name: "Shri B.S. Vairagi", position: "Member", image: "B_S_Vairagi.png" },
-    { name: "Shri S.M. Patil", position: "Member", image: "S_M_Patil.PNG" },
-    { name: "D.S. Pachandi", position: "Member", image: "D_S_Pachandi.PNG" },
-    { name: "Shri G.C. Kotagi", position: "Chairman", image: "G_C_Kotagi.PNG" },
+    { name: "Shri S.M. Patil", position: "Member", image: "S_M_patil.png" },
+    { name: "D.S. Pachandi", position: "Member", image: "D_S_Pachandi.png" },
+    { name: "Shri G.C. Kotagi", position: "Chairman", image: "G_C_Kotagi.png" },
     { name: "Shri G.B. Patil", position: "Chairman", image: "G_B_Patil.png" },
   ];
 

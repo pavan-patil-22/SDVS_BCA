@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import BoardOfDirectors from "./BoardOfDirectors";
 
 const AboutCollege = () => {
   useEffect(() => {
@@ -20,18 +21,29 @@ const AboutCollege = () => {
   const principals = [
     { period: "2007-2009", name: "Prof. S. S. Patil" },
     { period: "2009-2010", name: "Prof B. I. Hebbali" },
-    { period: "2011-2012", name: "Prof. D. S. Khade" },
+    { period: "2010-2012", name: "Prof. D. S. Khade" },
     { period: "2012-2013", name: "Prof. B. I. Hebbali" },
     { period: "2013-2015", name: "Prof. G. L. Badiger" },
-    { period: "2016-till date", name: "Prof. B. I. Hebbali" },
+    { period: "2015-till date", name: "Prof. B. I. Hebbali" },
   ];
 
   // Local Governing Body Members with image paths
   const governingBodyMembers = [
+    
     { 
       name: "Shri. R. B. Patil", 
       position: "Chairman LGB",
       image: "r.b.patil l.g.b president.JPG" 
+    },
+    { 
+      name: "Shri. G. C. Kotagi", 
+      position: "Secretory SDVS'S,Member",
+      image: "SECRETORY G.C.KOTAGI.JPG" 
+    },
+    { 
+      name: "Dr. B. A. Pujari", 
+      position: "Administrator SDVS'S,Member",
+      image: "B.A. PUJARI ADMINISTRATOR.JPG" 
     },
     { 
       name: "Shri. K. C. Shirakoli", 
@@ -58,16 +70,7 @@ const AboutCollege = () => {
       position: "Member",
       image: "DR P.S.MANNOLI L.G.B MEMBER.JPG" 
     },
-    { 
-      name: "Shri. G. C. Kotagi", 
-      position: "Member",
-      image: "SECRETORY G.C.KOTAGI.JPG" 
-    },
-    { 
-      name: "Dr. B. A. Pujari", 
-      position: "Member",
-      image: "B.A. PUJARI ADMINISTRATOR.JPG" 
-    },
+    
     { 
       name: "Prof. B.I. Hebbali", 
       position: "Secretary",
@@ -97,10 +100,18 @@ const AboutCollege = () => {
   return (
     <div className="about-college-page">
       <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
         .about-college-page {
-          font-family: Arial, sans-serif;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           color: #333;
           background-color: #f8f9fb;
+          width: 100%;
+          overflow-x: hidden;
         }
         
         .college-hero-section {
@@ -196,7 +207,10 @@ const AboutCollege = () => {
           border-radius: 10px;
           padding: 30px;
           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-          height: 100%;
+          min-height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
@@ -236,6 +250,7 @@ const AboutCollege = () => {
         .principals-list {
           list-style-type: none;
           padding: 0;
+          margin: 0;
         }
         
         .principals-list li {
@@ -262,6 +277,7 @@ const AboutCollege = () => {
           margin-right: 15px;
           font-size: 20px;
           font-weight: bold;
+          flex-shrink: 0;
         }
         
         .period-badge {
@@ -275,13 +291,14 @@ const AboutCollege = () => {
           text-align: center;
           border: 1px solid rgba(255, 255, 255, 0.3);
           font-weight: 500;
+          flex-shrink: 0;
         }
         
         .governing-body-card {
-          background: white;
+          // background: white;
           border-radius: 12px;
           padding: 30px;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+          // box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
         
         .governing-title {
@@ -294,30 +311,36 @@ const AboutCollege = () => {
         
         .member-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 25px;
           margin-top: 20px;
+          width: 100%;
         }
         
         .member-card {
           background: white;
-          border-radius: 12px;
+          border-radius: 14px;
           overflow: hidden;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-          transition: all 0.3s ease;
+          box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
           border: 1px solid #eaeaea;
+          display: flex;
+          flex-direction: column;
+          min-height: 1px;
         }
         
         .member-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+          transform: translateY(-8px);
+          box-shadow: 0 16px 35px rgba(0, 0, 0, 0.14);
         }
         
         .member-image-container {
-          height: 400px;
+          aspect-ratio: 4 / 5;
           overflow: hidden;
           position: relative;
           background: #f5f7fa;
+          flex-shrink: 0;
+          min-height: 220px;
         }
         
         .member-image-container img {
@@ -325,30 +348,35 @@ const AboutCollege = () => {
           height: 100%;
           object-fit: cover;
           transition: transform 0.5s ease;
+          display: block;
         }
         
         .member-card:hover .member-image-container img {
-          transform: scale(1.1);
+          transform: scale(1.08);
         }
         
         .member-info {
-          padding: 20px;
+          padding: 18px 16px 22px;
           text-align: center;
           background: white;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 6px;
         }
         
         .member-name {
-          font-size: 18px;
-          font-weight: bold;
+          font-size: 17px;
+          font-weight: 700;
           color: #1f3b88;
-          margin-bottom: 8px;
-          line-height: 1.4;
+          margin-bottom: 0;
+          line-height: 1.3;
         }
         
         .member-position {
-          font-size: 14px;
-          color: #666;
-          line-height: 1.4;
+          font-size: 13px;
+          color: #6f6f6f;
+          line-height: 1.5;
           font-style: italic;
         }
         
@@ -358,8 +386,8 @@ const AboutCollege = () => {
         }
         
         .rules-list {
-          list-style-type: decimal;
           padding-left: 25px;
+          margin: 0;
         }
         
         .rules-list li {
@@ -373,11 +401,6 @@ const AboutCollege = () => {
           border-bottom: none;
         }
         
-        .rules-list li:before {
-          font-weight: bold;
-          color: #1f3b88;
-        }
-        
         .image-container {
           overflow: hidden;
           border-radius: 12px;
@@ -388,6 +411,7 @@ const AboutCollege = () => {
           width: 100%;
           height: auto;
           transition: transform 0.5s ease;
+          display: block;
         }
         
         .image-container:hover img {
@@ -434,11 +458,105 @@ const AboutCollege = () => {
           margin: 0;
         }
         
-        @media (max-width: 992px) {
+        /* Responsive Grids - Multiple Cards in Row on Mobile */
+        @media (min-width: 1200px) {
           .member-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, minmax(220px, 1fr));
+          }
+        }
+        
+        @media (min-width: 992px) and (max-width: 1199px) {
+          .member-grid {
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+          }
+        }
+        
+        @media (min-width: 768px) and (max-width: 991px) {
+          .member-grid {
+            grid-template-columns: repeat(2, minmax(180px, 1fr));
+          }
+        }
+        
+        @media (max-width: 767px) {
+          .member-grid {
+            grid-template-columns: repeat(2, minmax(140px, 1fr));
+            gap: 16px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .member-grid {
+            grid-template-columns: repeat(2, minmax(120px, 1fr));
+            gap: 12px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 10px;
+          }
+
+          .member-image-container {
+            aspect-ratio: 1 / 1;
+            min-height: 0;
+          }
+
+          .member-name {
+            font-size: 15px;
+          }
+
+          .member-position {
+            font-size: 12px;
+          }
+        }
+        
+        /* Responsive Principals Timeline */
+        @media (max-width: 768px) {
+          .principals-list li {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 12px 0;
           }
           
+          .principals-list li:before {
+            display: none;
+          }
+          
+          .period-badge {
+            margin-right: 0;
+            margin-bottom: 5px;
+            width: 100%;
+          }
+          
+          .principals-list li span:last-child {
+            padding-left: 5px;
+          }
+        }
+        
+        @media (max-width: 576px) {
+          .principals-container {
+            padding: 20px;
+          }
+          
+          .principals-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+          }
+          
+          .period-badge {
+            font-size: 12px;
+            padding: 6px 12px;
+            text-align: center;
+            width: 100%;
+          }
+          
+          .principals-list li span:last-child {
+            font-size: 16px;
+            text-align: center;
+            width: 100%;
+          }
+        }
+        
+        /* Other Responsive Styles */
+        @media (max-width: 992px) {
           .college-hero-section h1 {
             font-size: 40px;
           }
@@ -465,16 +583,6 @@ const AboutCollege = () => {
             font-size: 24px;
           }
           
-          .member-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-          }
-          
-          .period-badge {
-            min-width: 120px;
-            font-size: 13px;
-          }
-          
           .card {
             padding: 25px;
           }
@@ -491,56 +599,19 @@ const AboutCollege = () => {
           .stat-number {
             font-size: 42px;
           }
+          
+          .about-college-page > div > div {
+            flex-direction: column !important;
+          }
         }
         
         @media (max-width: 576px) {
-          .member-grid {
-            grid-template-columns: 1fr;
-            max-width: 350px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-          
           .college-hero-section h1 {
-            font-size: 30px;
+            font-size: 28px;
           }
           
           .college-hero-section p {
-            font-size: 17px;
-          }
-          
-          .period-badge {
-            min-width: 110px;
-            font-size: 12px;
-            margin-right: 15px;
-          }
-          
-          .principals-container {
-            padding: 25px;
-          }
-          
-          .member-image-container {
-            height: 320px;
-          }
-          
-          .stats-container {
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .stat-card {
-            width: 100%;
-            max-width: 300px;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .college-hero-section {
-            padding: 70px 15px;
-          }
-          
-          .college-hero-section h1 {
-            font-size: 28px;
+            font-size: 16px;
           }
           
           .section-title {
@@ -548,11 +619,81 @@ const AboutCollege = () => {
           }
           
           .sub-title {
-            font-size: 22px;
+            font-size: 20px;
+            padding-left: 12px;
+            border-left-width: 3px;
           }
           
-          .period-badge {
-            min-width: 100px;
+          .content-text {
+            font-size: 15px;
+            line-height: 1.6;
+          }
+          
+          .highlight-box {
+            padding: 20px;
+          }
+          
+          .rules-list li {
+            font-size: 14px;
+            padding: 10px 0;
+          }
+          
+          .member-image-container {
+            height: 250px;
+          }
+          
+          .member-name {
+            font-size: 16px;
+          }
+          
+          .member-position {
+            font-size: 12px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .college-hero-section {
+            padding: 60px 15px;
+          }
+          
+          .member-image-container {
+            height: 220px;
+          }
+        }
+        
+        /* Utility Classes */
+        .flex-wrap {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        
+        .gap-30 {
+          gap: 30px;
+        }
+        
+        .grid-3-cols {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(240px, 1fr));
+          gap: 30px;
+          align-items: start;
+          width: 100%;
+        }
+        
+        @media (max-width: 992px) {
+          .grid-3-cols {
+            grid-template-columns: repeat(2, minmax(220px, 1fr));
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .grid-3-cols {
+            grid-template-columns: 1fr;
+          }
+        }
+        
+        @media (max-width: 576px) {
+          .grid-3-cols {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
@@ -584,7 +725,7 @@ const AboutCollege = () => {
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", alignItems: "center", marginBottom: "40px" }}>
-            <div style={{ flex: "1", minWidth: "300px" }} >
+            <div style={{ flex: "1", minWidth: "280px" }} >
               <div className="image-container">
                 <img
                   src="bca-college-building.jpg"
@@ -596,7 +737,7 @@ const AboutCollege = () => {
                 />
               </div>
             </div>
-            <div style={{ flex: "1", minWidth: "300px" }} >
+            <div style={{ flex: "1", minWidth: "280px" }} >
               <p className="content-text">
                 The Bachelor of Computer Applications (BCA) College at SDVS Sangh was established in 2007 with a vision to provide quality computer education to students in North Karnataka. Over the years, we have grown into a premier institution known for our excellent faculty, state-of-the-art infrastructure, and industry-relevant curriculum.
               </p>
@@ -607,16 +748,16 @@ const AboutCollege = () => {
           </div>
         </div>
 
-        {/* Vision, Mission & Goals Section */}
+        {/* Vision, Mission & Goals Section - Responsive 3 cards row that wraps on mobile */}
         <div style={{ marginBottom: "60px" }}>
           <div style={{ textAlign: "center", marginBottom: "40px" }} data-aos="fade-up">
             <h2 className="section-title">Our Guiding Principles</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "30px" }}>
+          <div className="grid-3-cols">
             {/* Vision Card */}
             <div data-aos="fade-up" data-aos-delay="100">
-              <div className="card vision-card">
+              <div className="card vision-card" style={{ height: "100%" }}>
                 <h3 className="sub-title">OUR VISION</h3>
                 <p className="content-text">
                   We aim to be a prominent institute where pioneering technology meets transformative learning experiences, empowering students to thrive in a rapidly evolving digital landscape.
@@ -626,7 +767,7 @@ const AboutCollege = () => {
 
             {/* Mission Card */}
             <div data-aos="fade-up" data-aos-delay="200">
-              <div className="card mission-card">
+              <div className="card mission-card" style={{ height: "100%" }}>
                 <h3 className="sub-title">OUR MISSION</h3>
                 <p className="content-text">
                   Our mission is to empower individuals through education and innovation to create positive change in the society. We encourage our students to achieve more in the field of education, both nationally and internationally.
@@ -636,9 +777,9 @@ const AboutCollege = () => {
 
             {/* Goals Card */}
             <div data-aos="fade-up" data-aos-delay="300">
-              <div className="card goals-card">
+              <div className="card goals-card" style={{ height: "100%" }}>
                 <h3 className="sub-title">GOALS</h3>
-                <ul className="content-text" style={{ paddingLeft: "20px" }}>
+                <ul className="content-text" style={{ paddingLeft: "20px", margin: 0 }}>
                   <li>To develop young minds by providing intellectual nourishment.</li>
                   <li>To eradicate social evils.</li>
                   <li>To enlight about environment.</li>
@@ -649,7 +790,7 @@ const AboutCollege = () => {
           </div>
         </div>
 
-        {/* Principals Section */}
+        {/* Principals Section - Responsive Timeline */}
         <div style={{ marginBottom: "60px" }}>
           <div style={{ textAlign: "center", marginBottom: "40px" }} data-aos="fade-up">
             <h2 className="section-title">Principals Who Have Served Our College</h2>
@@ -670,8 +811,12 @@ const AboutCollege = () => {
             </ul>
           </div>
         </div>
+        
+        <div>
+          <BoardOfDirectors />
+        </div>
 
-        {/* Local Governing Body Section */}
+        {/* Local Governing Body Section - Responsive Grid with multiple cards per row */}
         <div style={{ marginBottom: "60px" }}>
           <div style={{ textAlign: "center", marginBottom: "40px" }} data-aos="fade-up">
             <h2 className="section-title">Our College Local Governing Body</h2>
@@ -690,7 +835,7 @@ const AboutCollege = () => {
                         alt={member.name}
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = "https://via.placeholder.com/300x200/1f3b88/ffffff?text=" + encodeURIComponent(member.name.split(' ')[1] || member.name.substring(0, 2));
+                          e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231f3b88'/%3E%3Ctext x='50' y='50' font-size='14' text-anchor='middle' fill='white' dy='.3em'%3E" + encodeURIComponent(member.name.split(' ').pop() || member.name.substring(0, 2)) + "%3C/text%3E%3C/svg%3E";
                         }}
                       />
                     </div>
@@ -720,7 +865,7 @@ const AboutCollege = () => {
                 </h3>
                 <ol className="rules-list">
                   {rulesRegulations.map((rule, index) => (
-                    <li key={index} className="content-text">{rule}</li>
+                    <li key={index} className="content-text" style={{ marginBottom: 0 }}>{rule}</li>
                   ))}
                 </ol>
               </div>
@@ -728,14 +873,14 @@ const AboutCollege = () => {
           </div>
         </div>
 
-        {/* Infrastructure Section */}
+        {/* Infrastructure Section - Responsive row with 2 columns that wraps */}
         <div style={{ marginBottom: "60px" }}>
           <div style={{ textAlign: "center", marginBottom: "40px" }} data-aos="fade-up">
             <h2 className="section-title">Our Infrastructure</h2>
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
-            <div style={{ flex: "1", minWidth: "300px" }} data-aos="fade-up">
+            <div style={{ flex: "1", minWidth: "280px" }} data-aos="fade-up">
               <div className="image-container">
                 <img
                   src="computer-lab.jpg"
@@ -752,7 +897,7 @@ const AboutCollege = () => {
               </p>
             </div>
 
-            <div style={{ flex: "1", minWidth: "300px" }} data-aos="fade-up">
+            <div style={{ flex: "1", minWidth: "280px" }} data-aos="fade-up">
               <div className="image-container">
                 <img
                   src="library.jpg"
@@ -770,8 +915,6 @@ const AboutCollege = () => {
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   );

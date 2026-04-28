@@ -123,7 +123,7 @@ const Facility = () => {
                           className="facility-image"
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = `https://via.placeholder.com/600x338/1f3b88/ffffff?text=${encodeURIComponent(f.title)}`;
+                            e.target.src = `https://res.cloudinary.com/dj4tc4ih1/image/upload/v1777048403/user_profile_images/gukheby9nktqooefmsbu.png=${encodeURIComponent(f.title)}`;
                           }}
                         />
                         <div className="image-overlay"></div>

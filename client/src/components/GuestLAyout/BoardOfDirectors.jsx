@@ -12,8 +12,9 @@ const BoardOfDirectors = () => {
     { name: "Shri B.S. Vairagi", position: "Member", image: "B_S_Vairagi.png" },
     { name: "Shri S.M. Patil", position: "Member", image: "S_M_patil.png" },
     { name: "D.S. Pachandi", position: "Member", image: "D_S_Pachandi.png" },
+    { name: "Shri G.B. Patil", position: "Member", image: "G_B_Patil.png" },
     { name: "Shri G.C. Kotagi", position: "Chairman", image: "G_C_Kotagi.png" },
-    { name: "Shri G.B. Patil", position: "Chairman", image: "G_B_Patil.png" },
+    
   ];
 
   return (

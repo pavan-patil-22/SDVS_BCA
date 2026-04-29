@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 
 const GuestFooter = () => {
   const navigate = useNavigate();
+  const currentYear = new Date().getFullYear();
+  const copyrightYear = currentYear > 2025 ? `2025-${currentYear}` : "2025";
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -243,7 +245,7 @@ const GuestFooter = () => {
 
       {/* Copyright */}
       <div style={{ fontSize: "0.7rem", color: "#888" }}>
-        © Copyright 2025 All rights reserved | Powered by{" "}
+        © Copyright {copyrightYear} All rights reserved | Powered by{" "}
         <a
           href="https://ligandsoftware.com/"
           target="_blank"

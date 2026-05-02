@@ -14,7 +14,7 @@ const BoardOfDirectors = () => {
     { name: "D.S. Pachandi", position: "Member", image: "D_S_Pachandi.png" },
     { name: "Shri G.B. Patil", position: "Member", image: "G_B_Patil.png" },
     { name: "Shri G.C. Kotagi", position: "Secretory", image: "G_C_Kotagi.png" },
-    
+
   ];
 
   return (

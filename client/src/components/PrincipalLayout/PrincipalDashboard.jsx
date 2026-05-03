@@ -103,6 +103,7 @@ import {
   FaChartLine,
   FaCog
 } from "react-icons/fa";
+import { PiStudentDuotone } from "react-icons/pi";
 import { BASE_API_URL } from "../../BaseAPI";
 
 const API_CONFIG = [
@@ -127,6 +128,13 @@ const API_CONFIG = [
     icon: <FaChalkboardTeacher size={24} />,
     color: "#2196f3"
   },
+  // { 
+  //   name: "Toppers", 
+  //   endpoint: `${BASE_API_URL}/topper`, 
+  //   route: "/Principal/manage-toppers", 
+  //   icon: <PiStudentDuotone  size={24} />,
+  //   color: "#2196f3"
+  // },
   { 
     name: "Gallery", 
     endpoint: `${BASE_API_URL}/gallery`, 

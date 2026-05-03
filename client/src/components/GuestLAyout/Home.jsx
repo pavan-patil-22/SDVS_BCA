@@ -899,6 +899,7 @@ import Gallery from "./Gallery";
 import EventNews from "./EventNews";
 import NotificationBar from "./NotificationBar";
 import { useNavigate } from "react-router-dom";
+import Aos from "aos";
 
 /* ─── Design tokens ─────────────────────────────────── */
 const T = {
@@ -970,6 +971,21 @@ const Home = () => {
   const [statsVisible, setStatsVisible] = useState(false);
   const statsRef = useRef(null);
   const navigate = useNavigate();
+
+  
+ useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    Aos.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
 
   useEffect(() => { injectStyles(); }, []);
 

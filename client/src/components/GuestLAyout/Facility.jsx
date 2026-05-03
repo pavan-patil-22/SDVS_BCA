@@ -7,6 +7,19 @@ import { FaTv, FaWifi, FaBook, FaDesktop, FaFlask, FaUtensils, FaDumbbell, FaFir
 import { BASE_API_URL, Img_BASE_URL } from "../../BaseAPI";
 
 const Facility = () => {
+
+   useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: false,
+      });
+    }, []);
   const [facilities, setFacilities] = useState([]);
   const [loading, setLoading] = useState(true);
 

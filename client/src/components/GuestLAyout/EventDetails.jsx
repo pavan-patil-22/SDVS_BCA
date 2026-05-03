@@ -10,6 +10,19 @@ import 'aos/dist/aos.css';
 const DEFAULT_EVENT_IMAGE = "https://res.cloudinary.com/dj4tc4ih1/image/upload/v1777049676/user_profile_images/hinzyxciaqg7tnlcmwtg.jpg";
 
 const EventDetails = () => {
+ useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);

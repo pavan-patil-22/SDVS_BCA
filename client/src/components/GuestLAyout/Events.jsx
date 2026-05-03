@@ -14,6 +14,19 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
+   useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: false,
+      });
+    }, []);
+
   useEffect(() => {
     // Initialize AOS
     AOS.init({

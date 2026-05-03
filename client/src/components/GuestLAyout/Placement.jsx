@@ -293,7 +293,6 @@
 // };
 
 // export default Placement;
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
@@ -354,8 +353,6 @@ const Placement = () => {
             Know More <FaArrowRight size={12} />
           </button>
         </div>
-
-        
       </div>
 
       {/* ── MARQUEE — STUDENT CARDS ── */}
@@ -364,57 +361,59 @@ const Placement = () => {
         <div className="pl-section-line" />
       </div>
 
-      <div
-        className="pl-marquee"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
+      {placements.length > 0 && (
         <div
-          className="pl-marquee-track"
-          style={{ animationPlayState: isPaused ? "paused" : "running" }}
+          className="pl-marquee"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
-          {placements.concat(placements).map((p, i) => (
-            <div className="pl-card" key={i}>
-              <div className="pl-card-img-wrap">
-                <img
-                  src={`${IMG_URL}${p.image}`}
-                  alt={p.studentname}
-                  className="pl-card-img"
-                  onError={e => { e.target.src = FALLBACK_IMAGE; }}
-                />
-                <div className="pl-card-pkg">
-                  <FaMoneyBillWave size={11} />
-                  <span>{p.package} LPA</span>
+          <div
+            className="pl-marquee-track"
+            style={{ animationPlayState: isPaused ? "paused" : "running" }}
+          >
+            {[...placements, ...placements].map((p, i) => (
+              <div className="pl-card" key={i}>
+                <div className="pl-card-img-wrap">
+                  <img
+                    src={`${IMG_URL}${p.image}`}
+                    alt={p.studentname}
+                    className="pl-card-img"
+                    onError={e => { e.target.src = FALLBACK_IMAGE; }}
+                  />
+                  <div className="pl-card-pkg">
+                    <FaMoneyBillWave size={11} />
+                    <span>{p.package} LPA</span>
+                  </div>
+                </div>
+                <div className="pl-card-body">
+                  <h3 className="pl-card-name">{p.studentname}</h3>
+                  <p className="pl-card-meta">
+                    <FaUserGraduate size={11} />
+                    {p.course} &middot; {p.batch}
+                  </p>
+                  <p className="pl-card-company">
+                    <FaBuilding size={11} />
+                    {p.company}
+                  </p>
                 </div>
               </div>
-              <div className="pl-card-body">
-                <h3 className="pl-card-name">{p.studentname}</h3>
-                <p className="pl-card-meta">
-                  <FaUserGraduate size={11} />
-                  {p.course} &middot; {p.batch}
-                </p>
-                <p className="pl-card-company">
-                  <FaBuilding size={11} />
-                  {p.company}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* ── RECRUITERS ── */}
       <div className="pl-recruiters" data-aos="fade-up">
         <div className="pl-section-label">
-          <span><FaHandshake size={15} style={{marginRight:6}} />Esteemed Recruiters</span>
+          <span><FaHandshake size={15} style={{ marginRight: 6 }} />Esteemed Recruiters</span>
           <div className="pl-section-line" />
         </div>
 
         <div className="pl-logo-marquee">
           <div className="pl-logo-track">
-            {COMPANY_LOGOS.concat(COMPANY_LOGOS).map((logo, i) => (
+            {[...COMPANY_LOGOS, ...COMPANY_LOGOS].map((logo, i) => (
               <div className="pl-logo-card" key={i}>
                 <img
                   src={logo}
@@ -452,7 +451,8 @@ const Styles = () => (
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--white);
       color: var(--text);
-      overflow-x: hidden;
+      /* KEY FIX 1: contain overflow without isolating stacking context */
+      overflow-x: clip;
     }
 
     /* ── HERO ── */
@@ -530,38 +530,6 @@ const Styles = () => (
     }
     .pl-btn:active { transform: translateY(0); }
 
-    .pl-hero-right {
-      position: relative; z-index: 1;
-      flex-shrink: 0;
-    }
-
-    .pl-stat-card {
-      background: var(--white);
-      border-radius: var(--r);
-      padding: 28px 32px;
-      text-align: center;
-      box-shadow: 0 12px 40px rgba(0,0,0,.18);
-      animation: pl-float 3.5s ease-in-out infinite;
-    }
-    .pl-stat-ring {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      border: 4px solid var(--teal-lt);
-      outline: 4px solid var(--teal);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 14px;
-      animation: pl-spin-ring 6s linear infinite;
-    }
-    .pl-stat-number {
-      font-size: 26px; font-weight: 800;
-      color: var(--orange);
-    }
-    .pl-stat-label {
-      font-size: 13px; font-weight: 600;
-      color: var(--teal); margin: 0;
-      line-height: 1.5;
-    }
-
     /* ── SECTION LABEL ── */
     .pl-section-label {
       display: flex; align-items: center; gap: 14px;
@@ -576,22 +544,38 @@ const Styles = () => (
     }
 
     /* ── STUDENT MARQUEE ── */
+    /*
+      KEY FIXES for scroll jitter / overlap:
+      1. Use "overflow: hidden" NOT clip — clip can cause compositing issues
+      2. Remove "will-change" — forces GPU layer which bleeds over other elements
+      3. Add "isolation: isolate" to contain the stacking context
+      4. Use "transform: translate3d" in keyframes for smoother GPU compositing
+      5. Add "backface-visibility: hidden" on the track to prevent paint flickering
+    */
     .pl-marquee {
       overflow: hidden;
       background: var(--off);
       padding: 20px 0 28px;
       cursor: default;
+      /* KEY FIX 2: isolate stacking context so it never bleeds behind siblings */
+      isolation: isolate;
+      position: relative;
+      z-index: 0;
     }
+
     .pl-marquee-track {
-      display: inline-flex;
+      display: flex;
       gap: 20px;
+      width: max-content;
       animation: pl-scroll-left 30s linear infinite;
-      will-change: transform;
+      /* KEY FIX 3: backface prevents flicker during compositing */
+      backface-visibility: hidden;
+      /* KEY FIX 4: NO will-change here — it was creating a new stacking context
+         that overlapped adjacent sections on scroll */
     }
-    .pl-marquee:hover .pl-marquee-track { animation-play-state: paused; }
 
     .pl-card {
-      flex: 0 0 auto;
+      flex: 0 0 220px;
       width: 220px;
       background: var(--white);
       border-radius: var(--r);
@@ -651,17 +635,22 @@ const Styles = () => (
     .pl-recruiters {
       padding: 10px 0 40px;
       background: var(--white);
+      /* KEY FIX 5: same isolation treatment for logo marquee */
+      isolation: isolate;
+      position: relative;
+      z-index: 0;
     }
     .pl-logo-marquee {
       overflow: hidden;
       padding: 10px 0;
     }
     .pl-logo-track {
-      display: inline-flex;
+      display: flex;
       gap: 48px;
       align-items: center;
+      width: max-content;
       animation: pl-scroll-right 22s linear infinite;
-      will-change: transform;
+      backface-visibility: hidden;
     }
     .pl-logo-card img {
       height: 44px;
@@ -674,22 +663,17 @@ const Styles = () => (
       transform: scale(1.1);
     }
 
-    /* ── KEYFRAMES ── */
+    /* ── KEYFRAMES ──
+       Use translate3d (not translateX) — forces GPU compositing
+       on its own layer, preventing bleed into page scroll layers
+    */
     @keyframes pl-scroll-left {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0%   { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
     @keyframes pl-scroll-right {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-    @keyframes pl-float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-8px); }
-    }
-    @keyframes pl-spin-ring {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+      0%   { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0, 0, 0); }
     }
 
     /* ── RESPONSIVE ── */
@@ -703,16 +687,35 @@ const Styles = () => (
       .pl-hero::before { display: none; }
       .pl-hero-desc { margin-left: auto; margin-right: auto; }
       .pl-btn { margin: 0 auto; }
-      .pl-stat-card { padding: 20px 28px; }
       .pl-section-label { padding: 22px 20px 8px; }
     }
 
     @media (max-width: 480px) {
       .pl-hero { padding: 28px 18px; }
       .pl-hero-title { font-size: 26px; }
-      .pl-card { width: 180px; }
+      .pl-card { flex: 0 0 180px; width: 180px; }
       .pl-card-img-wrap { height: 175px; }
       .pl-section-label { font-size: 12px; padding: 20px 16px 6px; }
+    }
+
+    /* KEY FIX 6: Reduce motion preference — some users have this ON
+       which causes animation conflicts with scroll */
+    @media (prefers-reduced-motion: reduce) {
+      .pl-marquee-track,
+      .pl-logo-track {
+        animation: none;
+      }
+      .pl-marquee-track {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+      }
+      .pl-logo-track {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        gap: 24px;
+      }
     }
   `}</style>
 );

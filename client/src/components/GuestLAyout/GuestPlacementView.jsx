@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { BASE_API_URL } from "../../BaseAPI";
+import Aos from "aos";
 
 const API_URL = `${BASE_API_URL}/placements`;
 
@@ -110,6 +111,21 @@ const GuestPlacementView = () => {
     };
     fetchPlacements();
   }, []);
+
+  
+ useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    Aos.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
+
 
   return (
     <div className="gp-root">

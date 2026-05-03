@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_API_URL } from "../../BaseAPI";
+import Aos from "aos";
 
 /* ============================================================
    SVG ICONS — no emojis anywhere
@@ -116,6 +117,19 @@ const Toppers = () => {
   const [selYear, setSelYear] = useState(getAcademicYear());
   const [selSem,  setSelSem]  = useState(null);
   const [apiError, setApiError] = useState(false);
+
+   useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+      Aos.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: false,
+      });
+    }, []);
 
   useEffect(() => {
     (async () => {

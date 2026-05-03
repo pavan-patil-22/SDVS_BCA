@@ -31,17 +31,17 @@ const AboutCollege = () => {
     
     { 
       name: "Shri. R. B. Patil", 
-      position: "Chairman LGB",
+      position: "President",
       image: "r.b.patil l.g.b president.JPG" 
     },
     { 
       name: "Shri. G. C. Kotagi", 
-      position: "Secretory SDVS'S,Member",
+      position: "Secretory SDVS'S,Member LGB",
       image: "SECRETORY G.C.KOTAGI.JPG" 
     },
     { 
       name: "Dr. B. A. Pujari", 
-      position: "Administrator SDVS'S,Member",
+      position: "Administrator SDVS'S,Member LGB",
       image: "B.A. PUJARI ADMINISTRATOR.JPG" 
     },
     { 
@@ -55,11 +55,6 @@ const AboutCollege = () => {
       image: "L.G.B MEMBER MALLAPPA HUKKERI.JPG" 
     },
     { 
-      name: "Shri. Nitin Jadhav", 
-      position: "Member",
-      image: "governing-body/nitin-jadhav.jpg" 
-    },
-    { 
       name: "Shri. S. M. Patil", 
       position: "Member",
       image: "L.G.B MEMEBER S.M.PATIL.JPG" 
@@ -69,14 +64,24 @@ const AboutCollege = () => {
       position: "Member",
       image: "DR P.S.MANNOLI L.G.B MEMBER.JPG" 
     },
+    { 
+      name: "Shri. Nitin Jadhav", 
+      position: "Member",
+      image: "governing-body/nitin-jadhav.jpg" 
+    },
+     { 
+      name: "Shri.M.N.Badamallanav", 
+      position: "Member",
+      image: "MEMBER.JPG" 
+    },
     
     { 
-      name: "Prof. B.I. Hebbali", 
+      name: "Shri. B.I. Hebbali", 
       position: "Secretary",
       image: "B.I.HEBBALI PRINCIPAL.JPG" 
     },
     { 
-      name: "Prof. R.G. Bagewadi", 
+      name: "Smt. R.G. Bagewadi", 
       position: "Staff Representative",
       image: "H.O.D R.G.BAGEWADI.JPG" 
     },

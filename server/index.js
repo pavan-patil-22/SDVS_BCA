@@ -39,7 +39,7 @@ app.use("/api/placements",placementRouter);
 app.use("/api/events-news",eventNewsRouter);
 app.use("/api/contact-message", contactMessageRouter);
 app.use("/api/notifications", notificationRrouter);
-// app.use("/api/topper",TopperRouter)
+app.use("/api/topper",TopperRouter)
 
 //Reder Active API
 app.get("/health", (req, res) => {

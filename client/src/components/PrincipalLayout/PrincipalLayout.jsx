@@ -39,7 +39,7 @@ const AdminNavbar = ({ isCollapsed, setIsCollapsed, isMobile, setIsMobileOpen, i
     { name: 'Manage Event/News', path: '/Principal/manage-eventnews', icon: <FaNewspaper /> },
       { name: 'Guest Messages', path: '/Principal/guest-messages', icon: <FaEnvelope /> },
     { name: 'Manage Notification', path: '/Principal/manage-notifications', icon: <FaBell /> },
-    // { name: 'Manage Toppers', path: '/Principal/manage-toppers', icon: <PiStudent /> },
+    { name: 'Manage Toppers', path: '/Principal/manage-toppers', icon: <PiStudent /> },
     { name: 'Change Password', path: '/Principal/change-password', icon: <FaKey /> },
   
   ];

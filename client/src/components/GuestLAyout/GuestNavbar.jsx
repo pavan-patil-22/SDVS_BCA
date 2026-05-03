@@ -465,6 +465,7 @@ const GuestNavbar = () => {
         <li><Link to="/faculty" onClick={closeMenu}>Faculty</Link></li>
         <li><Link to="/events" onClick={closeMenu}>Events</Link></li>
         <li><Link to="/facilities" onClick={closeMenu}>Facilities</Link></li>
+        <li><Link to="/toppers" onClick={closeMenu}>Toppers</Link></li>
         <li><Link to="/placements" onClick={closeMenu}>Placements</Link></li>
         <li><Link to="/contact" onClick={closeMenu}>Contact Us</Link></li>
         <li>

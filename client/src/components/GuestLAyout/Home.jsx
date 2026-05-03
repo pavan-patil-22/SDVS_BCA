@@ -1012,7 +1012,7 @@ const Home = () => {
 
   const programmes = [
     {
-      title: "What SDVS Offers",
+      title: "What We Offers",
       accent: T.yellow,
       icon: "🎯",
       items: ["Workshops & Seminars","Tech Events & Hackathons","Cultural Fests","Sports & Athletics","Community Service & NSS","Career Guidance & Placements"],
@@ -1027,7 +1027,7 @@ const Home = () => {
       title: "Higher Studies",
       accent: T.blue,
       icon: "🎓",
-      items: ["MCA","MBA","M.Sc Information Technology","PG Diploma in Data Science / AI"],
+      items: ["MCA","MBA","M.Sc(Computer Science)","SLET/NET/M.Tech(C.S &Tech)/M.Phil/Ph.D)"],
     },
   ];
 
@@ -1158,7 +1158,7 @@ const Home = () => {
             fontSize: "clamp(26px, 5vw, 42px)",
             color: T.blue, fontWeight: 900, lineHeight: 1.2, marginBottom: 6,
           }}>
-            Why SDVS's BCA?
+            Why SDVSS BCA?
           </h2>
           <p style={{ color: T.muted, fontSize: 16, marginBottom: 36, maxWidth: 520 }}>
             The right choice for a successful, future-ready career in Information Technology.

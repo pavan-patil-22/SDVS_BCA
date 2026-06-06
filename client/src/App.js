@@ -35,8 +35,28 @@ import AboutCollege from "./components/GuestLAyout/AboutCollege";
 import ManageToppers from "./components/PrincipalLayout/ManageToppers";
 import Toppers from "./components/GuestLAyout/Toppers";
 import GuestPlacementView from "./components/GuestLAyout/GuestPlacementView";
+import axios from "axios";
+import { BASE_API_URL } from "./BaseAPI";
 
 function App() {
+
+  useEffect(() => {
+    const checkServer = async () => {
+      try {
+        const response = await axios.get(
+          `${BASE_API_URL}/health`
+        );
+
+        if (response.data === "ok") {
+          console.log("Server is running");
+        }
+      } catch (error) {
+        console.error("Server is not reachable", error);
+      }
+    };
+
+    checkServer();
+  }, []);
   // useEffect(() => {
   //   // Disable right-click
   //   const handleContextMenu = (e) => {

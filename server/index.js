@@ -42,7 +42,8 @@ app.use("/api/notifications", notificationRrouter);
 app.use("/api/topper",TopperRouter)
 
 //Reder Active API
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
+  // console.log("server get request..");
   res.status(200).send("OK");
 });
 

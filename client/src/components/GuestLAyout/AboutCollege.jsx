@@ -23,7 +23,8 @@ const AboutCollege = () => {
     { period: "2010-2012", name: "Prof. D. S. Khade" },
     { period: "2012-2013", name: "Prof. B. I. Hebbali" },
     { period: "2013-2015", name: "Prof. G. L. Badiger" },
-    { period: "2015-till date", name: "Prof. B. I. Hebbali" },
+    { period: "2015-2026", name: "Prof. B. I. Hebbali" },
+    { period: "2026-till date", name: "Prof. R. P. Kamble" },
   ];
 
   // Local Governing Body Members with image paths
